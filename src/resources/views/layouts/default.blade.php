@@ -10,7 +10,7 @@
 <body>
     <header class="header">
         <div class="header__logo">
-            <a href="{{ route('home'}}">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('images/logo.svg') }}" alt="企業ロゴ" class="header__logo-img" />
             </a>
         </div>
