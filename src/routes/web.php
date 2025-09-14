@@ -2,6 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 
+//認証関連
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SellController;
+
+//
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +25,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//非会員用ページ
+Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+
+//会員登録・ログイン用ページ
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+
+
+//認証後ページ
+//Route::middleware('auth')->group(function (){
+//マイページ関連
+Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage.show');
+Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.edit');
+Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.update');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+//購入関連
+Route::get('/purchase/{item_id}',[OrderController::class, 'show'])->name('purchase.show');
+Route::post('/purchase/{item_id}',[OrderController::class, 'store'])->name('purchase.store');
+Route::get('/purchase/address/{item_id}', [OrderController::class, 'editAddress'])->name('purchase.address.edit');
+Route::put('/purchase/address/{item_id}', [OrderController::class, 'updateAddress'])->name('purchase.address.update');
+
+//出品関連
+Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
+Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
+
+
+
+
