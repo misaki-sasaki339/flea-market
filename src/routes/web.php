@@ -27,7 +27,7 @@ use App\Http\Controllers\SellController;
 
 
 //非会員用ページ
-Route::get('/',[HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
 
 //会員登録・ログイン用ページ
