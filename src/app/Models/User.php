@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'postcode',
+        'address',
+        'building',
     ];
 
     /**
@@ -43,10 +47,6 @@ class User extends Authenticatable
     ];
 
     //リレーション
-    public function Profiles(){
-        return $this->hasOne('App\Models\Profile');
-    }
-
     public function Orders(){
         return $this->hasMany('App\Models\Order');
     }

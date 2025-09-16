@@ -5,19 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Condition extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'avatar_img',
-        'postcode',
-        'address',
-        'building',
+        'status'
     ];
-
+    
     //リレーション
-    public function User(){
-        return $this->belongsTo('App\Models\User');
+    public function Items(){
+        return $this->hasOne('App\Models\Item');
     }
 }

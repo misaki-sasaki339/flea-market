@@ -10,12 +10,10 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'item_img',
-        'condition',
-        'item_name',
-        'bland_name',
+        'img',
+        'name',
+        'bland',
         'description',
-        'price'
     ];
 
     //リレーション
