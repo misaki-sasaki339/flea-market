@@ -10,9 +10,9 @@ class Shipment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'shipment_postcode',
-        'shipment_address',
-        'shipment_building'
+        'postcode',
+        'address',
+        'building'
     ];
 
     //リレーション
