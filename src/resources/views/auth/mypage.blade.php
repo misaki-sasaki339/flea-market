@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="content-wrapper">
+<div class="content__wrapper">
     <section class="profile">
         <div class="profile__content">
             <img src="" alt="" class="avator_img" />
