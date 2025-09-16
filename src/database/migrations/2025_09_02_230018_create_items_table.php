@@ -17,7 +17,6 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->string('item_img');
             $table->json('category_ids');
-            $table->enum('condition',['excellent','good','normal','bad'])->default('excellent');
             $table->string('item_name');
             $table->string('bland_name')->nullable();
             $table->string('description');

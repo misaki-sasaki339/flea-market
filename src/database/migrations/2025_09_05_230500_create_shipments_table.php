@@ -16,9 +16,9 @@ class CreateShipmentsTable extends Migration
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('shipment_postcode');
-            $table->string('shipment_address');
-            $table->string('shipment_building');
+            $table->string('postcode');
+            $table->string('address');
+            $table->string('building');
             $table->timestamps();
         });
     }
