@@ -12,8 +12,7 @@
 
 @section('content')
 <div class="content">
-
-    <div class="edit-form__wrapper">
+    <div class="edit-form">
         <form action="{{ route('') }}" class="form" method="post">
             @csrf
             <div class="form-group__avatar">
