@@ -18,6 +18,7 @@
     </header>
 
     <main>
+        @yield('title')
         @yield('content')
     </main>
 </body>
