@@ -11,8 +11,8 @@
 @endsection
 
 @section('content')
-<div class="content__wrapper">
-    <div class="sell-form__wrapper">
+<div class="content">
+    <div class="sell-form">
         <form class="form" action="{{ route('') }}" method="post">
             @csrf
             <div class="form-group__img">
