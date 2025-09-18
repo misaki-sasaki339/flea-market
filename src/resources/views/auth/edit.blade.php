@@ -4,11 +4,15 @@
 <link rel="stylesheet" href="{{ asset('css/auth/edit.css') }}">
 @endsection
 
+@section('title')
+<div class="title">
+    <h2>プロフィール設定</h2>
+</div>
+@endsection
+
 @section('content')
 <div class="content">
-    <div class="content__title">
-        <h2>プロフィール設定</h2>
-    </div>
+
     <div class="edit-form__wrapper">
         <form action="{{ route('') }}" class="form" method="post">
             @csrf
