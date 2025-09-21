@@ -4,11 +4,14 @@
 <link rel="stylesheet" href="{{ asset('auth/register.css') }}">
 @endsection
 
-@section('content')
-<div class="register-form__heading">
-    <p>会員登録</p>
+@section('title')
+<div class="title">
+    <p class="title__label">会員登録</p>
 </div>
-<div class="register-form__content">
+@endsection
+
+@section('content')
+<div class="content">
     <form action="{{ route('register') }}" class="form" method="post">
         @csrf
         <div class="form-group">
@@ -17,8 +20,10 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="text" class="name" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input"type="text" class="name" />
+                    @error('name')
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="form-group__title">
@@ -26,8 +31,10 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="text" class="email" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input "type="text" class="email" />
+                    @error('email')
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="form-group__title">
@@ -35,8 +42,10 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="password" name="password" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input "type="password" name="password" />
+                    @error('password')
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>              
             </div>
             <div class="form-group__title">
@@ -44,8 +53,7 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="password" name="password_confirmation" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input" type="password" name="password_confirmation" />
                 </div>              
             </div>
             <div class="form__button">
@@ -53,6 +61,6 @@
             </div>
         </div>
     </form>
-    <a href="{{ route('login') }}">ログインはこちら</a>
+    <a class="content__link-login" href="{{ route('login') }}">ログインはこちら</a>
 </div>
 @endsection

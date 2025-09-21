@@ -4,11 +4,14 @@
 <link rel="stylesheet" href="{{ asset('auth/login.css') }}">
 @endsection
 
-@section('content')
-<div class="login-form__heading">
-    <p>ログイン</p>
+@section('title')
+<div class="title">
+    <p class="title__label">ログイン</p>
 </div>
-<div class="login-form__content">
+@endsection
+
+@section('content')
+<div class="content">
     <form action="{{ route('login') }}" class="form" method="post">
         @csrf
         <div class="form-group">
@@ -17,8 +20,10 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="text" class="email" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input" type="text" class="email" />
+                    @error('email')
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>
             </div>
             <div class="form-group__title">
@@ -26,8 +31,10 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input type="password" name="password" />
-                    <!--エラーメッセージ-->
+                    <input class="form__input" type="password" name="password" />
+                    @error('password')
+                    <p class="error-message">{{ $message }}</p>
+                    @enderror
                 </div>              
             </div>
             <div class="form__button">
@@ -35,6 +42,6 @@
             </div>
         </div>
     </form>
-    <a href="{{ route('register') }}">会員登録はこちら</a>
+    <a class="content__link-register" href="{{ route('register') }}">会員登録はこちら</a>
 </div>
 @endsection
