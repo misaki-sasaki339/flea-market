@@ -25,7 +25,7 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment'=>'required',
-            'address'=>'required'|'exists:profiles,id',
+            'address'=>'required|exists:profiles,id',
         ];
     }
 
