@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="content">
-    <form action="{{ route('login') }}" class="form" method="post">
+    <form action="{{ route('login.store') }}" class="form" method="post">
         @csrf
         <div class="form-group">
             <div class="form-group__title">
