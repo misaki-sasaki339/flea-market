@@ -20,7 +20,7 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input class="form__input" type="text" class="email" />
+                    <input class="form__input" type="text" name="email" />
                     @error('email')
                     <p class="error-message">{{ $message }}</p>
                     @enderror
