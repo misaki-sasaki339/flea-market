@@ -13,7 +13,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\SearchController;
 //
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +30,7 @@ use App\Http\Controllers\LoginController;
 //非会員用ページ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 //会員登録・ログイン用ページ
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
