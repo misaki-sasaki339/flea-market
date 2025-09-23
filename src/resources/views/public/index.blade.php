@@ -13,14 +13,12 @@
         @endauth
 
         @guest
-        <a href="{{ route('login') }}">マイリスト</a>
+        <a href="{{ route('login.create') }}">マイリスト</a>
+        @endguest
     </div>
 
     <div class="list-wrapper">
-        <!--
-        @foreach($items as $item)
-        商品画像・商品名
-        @endforeach-->
+
     </div>
 </div>
 @endsection
