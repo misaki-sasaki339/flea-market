@@ -5,7 +5,7 @@
 @endsection
 
 @section('header')
-<nav class="header__nav-wrapper">
+<nav class="header__nav">
     <div class="header__item-search">
         <form action="{{ route('search') }}" class="search-form" method="get">
             @csrf
