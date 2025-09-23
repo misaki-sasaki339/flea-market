@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->json('category_ids');
             $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
             $table->string('name');
-            $table->string('bland')->nullable();
+            $table->string('brand')->nullable();
             $table->string('description');
             $table->integer('price');
             $table->timestamps();
