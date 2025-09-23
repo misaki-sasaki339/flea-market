@@ -15,10 +15,11 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('item_img');
+            $table->string('img');
             $table->json('category_ids');
-            $table->string('item_name');
-            $table->string('bland_name')->nullable();
+            $table->foreignId('condition_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
+            $table->string('bland')->nullable();
             $table->string('description');
             $table->integer('price');
             $table->timestamps();
