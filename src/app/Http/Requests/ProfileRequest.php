@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'avator_img'=>'required|image|mimes:jpeg,png',
+            'avator'=>'required|image|mimes:jpeg,png',
             'name'=>'required',
             'postcode'=>'required|regex:/^\d{3}-\d{4}$/',
             'address'=>'required',
