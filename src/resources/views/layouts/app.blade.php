@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('layouts/app.css') }}">
+@endsection
 
 @section('header')
 <nav class="header__nav-wrapper">
