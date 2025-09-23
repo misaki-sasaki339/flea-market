@@ -12,6 +12,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\LoginController;
 
 //
 /*
@@ -32,8 +33,8 @@ Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show'
 
 //会員登録・ログイン用ページ
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
-
+Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 //認証後ページ
 //Route::middleware('auth')->group(function (){
