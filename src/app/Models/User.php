@@ -47,19 +47,19 @@ class User extends Authenticatable
     ];
 
     //リレーション
-    public function Orders(){
+    public function orders(){
         return $this->hasMany('App\Models\Order');
     }
 
-    public function Sales(){
+    public function sales(){
         return $this->hasMany('App\Models\Sale');
     }
 
-    public function Comments(){
+    public function comments(){
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function Favorites(){
+    public function favorites(){
         return $this->hasMany('App\Models\Favorite');
     }
 }
