@@ -14,7 +14,7 @@ class Category extends Model
     ];
 
     //リレーション
-    public function Items(){
+    public function items(){
         return $this->hasMany('App\Models\Item'); 
     }
 }

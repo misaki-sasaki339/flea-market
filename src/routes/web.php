@@ -40,13 +40,13 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 //認証後ページ
 //Route::middleware('auth')->group(function (){
 //マイページ関連
-Route::get('/mypage', [ProfileController::class, 'show'])->name('mypage.show');
+Route::get('/mypage', [ProfileController::class, 'index'])->name('mypage');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.edit');
 Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.update');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 //購入関連
-Route::get('/purchase/{item_id}',[OrderController::class, 'show'])->name('purchase.show');
+Route::get('/purchase/{item_id}',[OrderController::class, 'index'])->name('purchase');
 Route::post('/purchase/{item_id}',[OrderController::class, 'store'])->name('purchase.store');
 Route::get('/purchase/address/{item_id}', [OrderController::class, 'editAddress'])->name('purchase.address.edit');
 Route::put('/purchase/address/{item_id}', [OrderController::class, 'updateAddress'])->name('purchase.address.update');

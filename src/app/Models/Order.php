@@ -10,15 +10,15 @@ class Order extends Model
     use HasFactory;
 
     //リレーション
-    public function User(){
+    public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
-    public function Items(){
+    public function items(){
         return $this->hasOne('App\Models\Item');
     }
 
-    public function Shipments(){
+    public function shipments(){
         return $this->hasOne('App\Models\Shipment');
     }
 }
