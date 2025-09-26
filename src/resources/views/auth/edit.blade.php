@@ -17,7 +17,7 @@
             @csrf
             @method('PATCH')
             <div class="form-group__avatar">
-                <img src="{{ asset('storage/' . $user->avator) }}" alt="プロフィール画像">
+                <img src="{{ asset('storage/' . $user->avatar) }}" alt="プロフィール画像">
                 <label for="avator" class="form__button-upload">画像を選択する</label>
                 <input type="file" class="hidden" name="avator" accept="image/png, image/jpeg" />
             </div>

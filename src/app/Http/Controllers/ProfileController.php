@@ -13,14 +13,15 @@ class ProfileController extends Controller
     //プロフィール画面の表示
     public function index(){
         $user = Auth::user();
-        $sells = $user->sales()->orderBy('created_at', 'desc')->get();
+        $sales = $user->sales()->orderBy('created_at', 'desc')->get();
         $orders = $user->orders()->orderBy('created_at', 'desc')->get();
-        return view('mypage', compact('users'));
+        return view('auth.mypage', compact('user', 'sales', 'orders'));
     }
 
     //プロフィールの編集画面の表示
     public function edit(){
-        return view('mypage.edit');
+        $user = Auth::user();
+        return view('auth.edit', compact('user'));
     }
 
     //プロフィールの更新
