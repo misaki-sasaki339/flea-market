@@ -34,7 +34,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 //会員登録・ログイン用ページ
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-Route::get('/login', [LoginController::class, 'create'])->name('login.create');
+Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
 //認証後ページ
