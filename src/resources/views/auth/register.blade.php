@@ -67,6 +67,6 @@
             <button class="form__button-submit" type="submit">登録する</button>
         </div>
     </form>
-    <a class="content__link-login" href="{{ route('login.create') }}">ログインはこちら</a>
+    <a class="content__link-login" href="{{ route('login') }}">ログインはこちら</a>
 </div>
 @endsection
