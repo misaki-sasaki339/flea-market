@@ -20,7 +20,8 @@ class ProfileController extends Controller
 
     //プロフィールの編集画面の表示
     public function edit(){
-        $user = Auth::user();
+        //$user = Auth::user();
+        $user = \App\Models\User::first();
         return view('auth.edit', compact('user'));
     }
 
