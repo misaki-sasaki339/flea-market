@@ -16,7 +16,7 @@ body {
 }
 
 .header__logo{
-
+    margin-left: 24px;
 }
 
 .header__link{
@@ -25,6 +25,4 @@ body {
 
 .header__logo-img{
     width: 240px;
-    height: auto;
-    margin-left: 24px;
 }

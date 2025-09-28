@@ -42,7 +42,7 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 //マイページ関連
 Route::get('/mypage', [ProfileController::class, 'index'])->name('mypage');
 Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.edit');
-Route::put('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.update');
+Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.update');
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 //購入関連
