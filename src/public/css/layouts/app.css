@@ -5,6 +5,7 @@
 }
 
 .header-nav__search{
+    height: 32px;
 
 }
 
@@ -12,25 +13,32 @@
 
 }
 
-.form__input{
-
+.form__input-search{
+    height: 32px;
+    width: 400px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 .header-nav__link{
     display: flex;
     gap: 16px;
     list-style: none;
+    margin: 0;
+    align-items: center;
+    height: 32px;
 }
 
 a{
     display: inline-block;
-    display: inline-block;
+    align-content: center;
     text-align: center;
+    height: 32px;
 }
 
 .header-nav__link-logout,
 .header-nav__link-mypage{
-    color: #FFFFFF !important;
+    color: #FFFFFF;
     text-decoration: none;
     width: 80px;
 }
