@@ -14,6 +14,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserController;
 //
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 //会員登録・ログイン用ページ
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 
