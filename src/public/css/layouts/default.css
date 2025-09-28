@@ -12,6 +12,7 @@ body {
     height: 56px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .header__logo{
