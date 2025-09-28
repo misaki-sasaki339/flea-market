@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="content">
-    <form action="{{ route('register') }}" class="form" method="post">
+    <form action="{{ route('register.store') }}" class="form" method="post">
         @csrf
         <div class="form-group">
             <div class="form-group__title">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input class="form__input @error('name') is-invalid @enderror" type="text" class="name" />
+                    <input class="form__input @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" />
                     @error('name')
                     <p class="error-message">{{ $message }}</p>
                     @enderror
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
-                    <input class="form__input @error('email') is-invalid @enderror" type="text" class="email" />
+                    <input class="form__input @error('email') is-invalid @enderror" type="text" name="email" value="{{ old('email') }}"/>
                     @error('email')
                     <p class="error-message">{{ $message }}</p>
                     @enderror

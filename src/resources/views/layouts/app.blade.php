@@ -18,7 +18,7 @@
             @auth
             <li><a class="header-nav__link-logout" href="{{ route('logout') }}">ログアウト</a></li>
             <li><a class="header-nav__link-mypage" href="{{ route('mypage') }}">マイページ</a></li>
-            <li><a class="header-nav__link-sell" href="{{ route('sell') }}">出品</a></li>
+            <li><a class="header-nav__link-sell" href="">出品</a></li>
             @endauth
 
             @guest
