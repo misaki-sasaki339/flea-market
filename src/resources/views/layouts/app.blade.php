@@ -1,10 +1,12 @@
 @extends('layouts.default')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('layouts/app.css') }}">
+@parent
+<link rel="stylesheet" href="{{ asset('css/layouts/app.css') }}">
 @endsection
 
 @section('header')
+@parent
 <nav class="header-nav">
     <div class="header-nav__search">
         <form action="{{ route('search') }}" class="form" method="get">
