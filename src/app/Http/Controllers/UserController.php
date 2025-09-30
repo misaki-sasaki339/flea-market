@@ -21,4 +21,6 @@ class UserController extends Controller
         //プロフィール編集画面にリダイレクト
         return redirect()->route('mypage.edit');
     }
+
+    
 }

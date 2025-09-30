@@ -51,8 +51,12 @@
   transform: translateY(-5px);
 }
 
-.hidden{
-    display: none;
+.form__input-img{
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
 }
 
 .form-group{

@@ -19,7 +19,10 @@
         <div class="form-group__avatar">
             <img class="img__avatar" src="{{ asset('storage/' . $user->avatar) }}" alt="プロフィール画像">
             <label for="avatar" class="form__button-upload">画像を選択する</label>
-            <input type="file" class="hidden" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            <input type="file" class="form__input-img" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            @error('avatar')
+            <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
         <div class="form-group">
             <div class="form-group__title">
