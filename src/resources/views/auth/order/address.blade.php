@@ -6,40 +6,42 @@
 
 @section('title')
 <div class="title">
-    <h2>住所の変更</h2>
+    <p class="title__label">住所の変更</p>
 </div>
 @endsection
 
 @section('content')
 <div class="content">
     <form action="{{ route('') }}" class="form" method="post">
+        @method('PATCH')
+        @csrf
         <div class="form-group">
             <div class="form-group__title">
-                <p>郵便番号</p>
+                <p class="form__label--item">郵便番号</p>
             </div>
             <div class="form-group__content">
                 <div class="form-group__input-text">
-                    <input class="form__input" type="text" name="postcode" />
+                    <input class="form__input @error('postcode') is-invalid @enderror"" type="text" name="postcode" value="{{ $user->postcode }}"/>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="form-group__title">
-                <p>住所</p>
+                <p class="form__label--item">住所</p>
             </div>
             <div class="form-group__content">
                 <div class="form-group__input-text">
-                    <input class="form__input" type="text" name="address" />
+                    <input class="form__input @error('address') is-invalid @enderror"" type="text" name="address" value="{{ $user->address }}">
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="form-group__title">
-                <p>建物名</p>
+                <p class="form__label--item">建物名</p>
             </div>
             <div class="form-group__content">
                 <div class="form-group__input-text">
-                    <input class="form__input" type="text" name="building" />
+                    <input class="form__input" type="text" name="building" value="{{ $user->bulding }}"/>
                 </div>
             </div>
         </div>
