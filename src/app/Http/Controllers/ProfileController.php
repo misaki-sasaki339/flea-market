@@ -27,10 +27,7 @@ class ProfileController extends Controller
 
     //プロフィールの更新
     public function update(ProfileRequest $request){
-        $user = $request->only(['name', 'postcode', 'address', 'building']);
-        User::find($request->id)->update($user);
-
-
-        return redirect('mypage');
+        auth()->user()->update($request->only(['avatar','name', 'postcode', 'address', 'building']));
+        return redirect('auth.mypage');
     }
 }
