@@ -17,8 +17,9 @@
         <div class="tab__content" id="content1">
             @foreach($items as $item)
             <div class="tab__content-item">
-                {{--<a href="{{ route('item.show'), $item }}"></a>--}}
+                <a class="item-link" href="{{ route('item.show', $item) }}">
                 <img src="{{ asset('storage/' . $item->img) }}" alt="商品画像">
+                </a>
                 <p class="item-name">{{ $item->name }}</p>
             </div>
             @endforeach
