@@ -8,11 +8,10 @@ use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 
 //コントローラー
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ItemController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 //
@@ -30,7 +29,7 @@ use App\Http\Controllers\UserController;
 
 //非会員用ページ
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('item.show');
+Route::get('/item/{item}', [HomeController::class, 'show'])->name('item.show');
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 
 //会員登録・ログイン用ページ
@@ -48,10 +47,10 @@ Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('myp
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 //購入関連
-Route::get('/purchase/{item_id}',[OrderController::class, 'index'])->name('purchase');
-Route::post('/purchase/{item_id}',[OrderController::class, 'store'])->name('purchase.store');
-Route::get('/purchase/address/{item_id}', [OrderController::class, 'editAddress'])->name('purchase.address.edit');
-Route::put('/purchase/address/{item_id}', [OrderController::class, 'updateAddress'])->name('purchase.address.update');
+Route::get('/purchase/{item}',[PurchaseController::class, 'index'])->name('purchase');
+Route::post('/purchase/{item}',[PurchaseController::class, 'store'])->name('purchase.store');
+Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
+Route::put('/purchase/address/{item}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 
 //出品関連
 Route::get('/sell', [SellController::class, 'create'])->name('sell.create');

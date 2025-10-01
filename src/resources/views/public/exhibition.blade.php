@@ -1,22 +1,59 @@
 @extends('layouts.app')
 
 @section('css')
+@parent
 <link rel="stylesheet" href="{{ asset('css/public/exhibition.css') }}">
 @endsection
 
 @section('content')
 <div class="content">
-    <div class="tab-switch">
-        <label><input type="radio" name="tab" checked />おすすめ</label>
-        <!--下線表示の方法検討-->
-        <div class="tab-content">
-            <!--@foreachで表示-->
+    <div class="item__img">
+        <img class="img__item" src="{{ asset('storage/' . $item->img) }}" alt="{{ $item->name }}">
+    </div>
+    <div class="item__details">
+        <div class="item__title">
+            <p class="item__title-label">{{ $item->name }}</p>
+            <p class="item__brand-label">{{ $item->brand }}</p>
         </div>
+        <div class="item__price">
+            <p class="item__price-label">
+                <span class="icon-yen">¥</span>
+                {{ $item->price }}
+                <span class="tax-in">(税込)</span>
+            </p>
+        </div>
+        {{--お気に入りとレビューのアイコン--}}
+        <div class="form-order">
+            {{--<form class="form" action="{{ route('purchase') }}" method="get">
+                @csrf
+                <input type="hidden" name="id" value="{{ $item->id }}">
+                <div class="form__button">
+                    <button class="form__button-submit" type="submit">購入手続きへ</button>
+                </div>
+            </form>--}}
+        </div>
+        <div class="item__description">
+            <p class="item__description-label">商品説明</p>
+            <p class="item__description-content">{{ $item->description }}</p>
+        </div>
+        <div class="item__information">
+            <p class="item__information-label">商品の情報</p>
+            <div class="item__information-category">
+                <p class="item__information-sublabel">カテゴリー</p>
+                {{--カテゴリーを持ってくる、表示方法検討--}}
+            </div>
+            <di class="item__information-condition">
+                <p class="item__information-sublabel">商品の状態</p>
+            </div>
+            <div class="item__comment">
+                <div class="item__comment-posted">
 
-        <label><input type="radio" name="tab" />マイリスト</label>
-        <!--下線表示の方法検討-->
-        <div class="tab-content">
-            <!--favorite使って@foreach表示-->
+                </div>
+                <div class="item__comment-preview">
+                    <p class="item__comment-label">商品へのコメント</p>
+                    <textarea class="item__comment-content" name="review" id=""></textarea>
+                </div>
+            </div>
         </div>
     </div>
 </div>
