@@ -5,12 +5,10 @@
 @endsection
 
 @section('content')
-<div class="content">
-    <section class="profile">
-        <div class="profile__content">
+<section class="content">
+    <section class="profile-content">
             <img src="" alt="" class="avator_img" />
             <span class="name">{{ Auth::user->name() }}</span>
-        </div>
         <div class="profile__edit">
             <form action="{{ route('mypage.edit') }}" method="get">
                 @csrf
@@ -34,5 +32,5 @@
             </div>
         </div>
     </section>
-</div>
+</section>
 @endsection
