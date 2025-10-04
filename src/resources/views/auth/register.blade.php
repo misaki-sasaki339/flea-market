@@ -6,7 +6,7 @@
 
 @section('title')
 <div class="title">
-    <p class="title__label">会員登録</p>
+    <h2 class="title__label">会員登録</h2>
 </div>
 @endsection
 
@@ -16,7 +16,7 @@
         @csrf
         <div class="form-group">
             <div class="form-group__title">
-                <p class="form__label--item">ユーザー名</p>
+                <label for="name" class="form__label--item">ユーザー名</label>
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <div class="form-group__title">
-                <p class="form__label--item">メールアドレス</p>
+                <label for="email" class="form__label--item">メールアドレス</label>
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <div class="form-group__title">
-                <p class="form__label--item">パスワード</p>
+                <label for="password" class="form__label--item">パスワード</label>
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">
@@ -55,7 +55,7 @@
         </div>
         <div class="form-group">
             <div class="form-group__title">
-                <p class="form__label--item">確認用パスワード</p>
+                <label for="password" class="form__label--item">確認用パスワード</label>
             </div>
             <div class="form-group__content">
                 <div class="form__input-text">

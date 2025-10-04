@@ -12,7 +12,7 @@
     </div>
     <div class="item__details">
         <div class="item__title">
-            <h2 class="item__title-label">{{ $item->name }}</h2>
+            <h3 class="item__title-label">{{ $item->name }}</h3>
             <p class="item__brand-label">{{ $item->brand }}</p>
         </div>
         <div class="item__price">
