@@ -7,7 +7,7 @@
 
 @section('title')
 <div class="title">
-    <p class="title__label">プロフィール設定</p>
+    <h1 class="title__label">プロフィール設定</h1>
 </div>
 @endsection
 

@@ -6,7 +6,7 @@
 
 @section('title')
 <div class="title">
-    <p class="title__label">ログイン</p>
+    <h1 class="title__label">ログイン</h1>
 </div>
 @endsection
 
