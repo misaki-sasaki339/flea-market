@@ -16,6 +16,7 @@ class HomeController extends Controller
 
     //商品詳細ページの表示
     public function show(Item $item){
+        $item->load('comments.user');
         return view('public.exhibition', compact('item'));
     }
 }

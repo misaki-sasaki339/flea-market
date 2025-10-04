@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\Comment;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,8 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this -> call(ConditionsTableSeeder::class);
-        $this -> call(CategoriesTableSeeder::class);
-        $this -> call(ItemsTableSeeder::class);
+        $this->call([
+            UsersTableSeeder::class,
+            CategoriesTableSeeder::class,
+            ConditionsTableSeeder::class,
+            ItemsTableSeeder::class,
+            CategoryItemsTableSeeder::class,
+        ]);
+         Comment::factory()->count(15)->create();
     }
 }

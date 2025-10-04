@@ -51,15 +51,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Order');
     }
 
-    public function sales(){
-        return $this->hasMany('App\Models\Sale');
-    }
-
     public function comments(){
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function favorites(){
-        return $this->hasMany('App\Models\Favorite');
+    public function favoriteItems(){
+        return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
+    }
+
+    public function items(){
+        return $this->hasMany('App\Models\Item');
     }
 }
