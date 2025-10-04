@@ -17,7 +17,7 @@ class ItemsTableSeeder extends Seeder
         $params = [
             [
                 'img' => 'img/item/Armani+Mens+Clock.jpg',
-                'category_ids' => json_encode([1,5,12]),
+                'user_id'=>'1',
                 'condition_id'=>'1',
                 'name'=>'腕時計',
                 'brand'=>'Rolax',
@@ -26,7 +26,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/HDD+Hard+Disk.jpg',
-                'category_ids' => json_encode([2]),
+                'user_id'=>'2',
                 'condition_id'=>'2',
                 'name'=>'HDD',
                 'brand'=>'西芝',
@@ -35,7 +35,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/onion.jpg',
-                'category_ids' => json_encode([10,11]),
+                'user_id'=>'3',
                 'condition_id'=>'3',
                 'name'=>'玉ねぎ3束',
                 'brand'=>'なし',
@@ -44,7 +44,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Leather+Shoes+Product+Photo.jpg',
-                'category_ids' => json_encode([1,5]),
+                'user_id'=>'4',
                 'condition_id'=>'4',
                 'name'=>'革靴',
                 'brand'=>'',
@@ -53,7 +53,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Living+Room+Laptop.jpg',
-                'category_ids' => json_encode([2]),
+                'user_id'=>'5',
                 'condition_id'=>'1',
                 'name'=>'ノートPC',
                 'brand'=>'',
@@ -62,7 +62,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Music+Mic+4632231.jpg',
-                'category_ids' => json_encode([2]),
+                'user_id'=>'6',
                 'condition_id'=>'2',
                 'name'=>'マイク',
                 'brand'=>'',
@@ -71,7 +71,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Purse+fashion+pocket.jpg',
-                'category_ids' => json_encode([1,4]),
+                'user_id'=>'7',
                 'condition_id'=>'3',
                 'name'=>'ショルダーバッグ',
                 'brand'=>'',
@@ -80,7 +80,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Tumbler+souvenir.jpg',
-                'category_ids' => json_encode([10]),
+                'user_id'=>'8',
                 'condition_id'=>'4',
                 'name'=>'タンブラー',
                 'brand'=>'なし',
@@ -89,7 +89,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/Waitress+with+Coffee+Grinder.jpg',
-                'category_ids' => json_encode([3,10]),
+                'user_id'=>'9',
                 'condition_id'=>'1',
                 'name'=>'コーヒーミル',
                 'brand'=>'Starbacks',
@@ -98,7 +98,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'img/item/外出メイクアップセット.jpg',
-                'category_ids' => json_encode([1,4,6]),
+                'user_id'=>'1',
                 'condition_id'=>'2',
                 'name'=>'メイクセット',
                 'brand'=>'',

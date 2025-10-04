@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 
 //認証関連
@@ -56,6 +57,8 @@ Route::put('/purchase/address/{item}', [PurchaseController::class, 'updateAddres
 Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
 Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 
-
+//いいね機能
+Route::get('/item/favorite/{id}', [FavoriteController::class, 'favorite'])->name('item.favorite');
+Route::get('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->name('item.unfavorite');
 
 

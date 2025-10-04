@@ -20,7 +20,8 @@ class LoginController extends Controller
         //認証成功
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/mypage');
+            //return redirect()->intended('/mypage'); //本番
+            return redirect(route('home')); //テスト用
         }
         
         //認証失敗
