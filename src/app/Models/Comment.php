@@ -10,7 +10,9 @@ class Comment extends Model
     use HasFactory;
     
     protected $fillable = [
-        'review'
+        'user_id',
+        'item_id',
+        'review',
     ];
 
     //リレーション
