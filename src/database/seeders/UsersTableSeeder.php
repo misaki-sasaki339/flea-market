@@ -43,6 +43,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'サンジ',
             'email' => 'Sanji@example.com',
             'password' => Hash::make('password123'), 
+            'avatar'=> 'img/avatar/サンジ.png'
         ]);        
         User::create([
             'name' => 'トニートニー・チョッパー',

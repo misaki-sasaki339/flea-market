@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
+use App\Http\Requests\CommentRequest;
 //
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +63,5 @@ Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 Route::get('/item/favorite/{id}', [FavoriteController::class, 'favorite'])->name('item.favorite');
 Route::get('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->name('item.unfavorite');
 
-
+//コメント機能
+Route::post('/item/comment/{id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');

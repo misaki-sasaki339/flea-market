@@ -13,75 +13,89 @@
 
     <div class="item__details">
         <section class="item__title">
-            <h2 class="item__title-label">{{ $item->name }}</h2>
+            <h2>{{ $item->name }}</h2>
             <p class="item__brand-label">{{ $item->brand }}</p>
-            <p class="item__price-label">
-                <span class="icon-yen">¥</span>
-                {{ $item->price }}
-                <span class="tax-in">(税込)</span>
+            <p class="item__price-label">¥
+                <span class="item-price">{{ number_format($item->price) }}</span>
+                (税込)
             </p>
         </section>
 
-        <section class="item__review">
+        <section class="item__review-summary">
             <div class="item__review-favorite">
                 @if($item->isLikedByAuthUser())
-                <a href="{{ route('item.unfavorite', ['id'=>$item->id]) }}" class="">
-                    <img src="{{ asset('images/いいねマーク.svg') }}" class="{{ $item->isLikedByAuthUser() ? 'star-liked' : 'star' }}" alt="">
+                <a href="{{ route('item.unfavorite', ['id'=>$item->id]) }}" class="no-app-style">
+                    <img src="{{ asset('images/いいねマーク.svg') }}" class="star-liked" alt="いいね">
                     <span class="review-count">{{ $item->favorites->count() }}</span>
                 </a>
                 @else
-                <a href="{{ route('item.favorite', ['id'=>$item->id]) }}" class="">
-                    <img src="{{ asset('images/いいねマーク.svg') }}" class="{{ $item->isLikedByAuthUser() ? 'star-liked' : 'star' }}" alt="">
+                <a href="{{ route('item.favorite', ['id'=>$item->id]) }}" class="no-app-style">
+                    <img src="{{ asset('images/いいねマーク.svg') }}" class="star" alt="いいね">
                     <span class="review-count">{{ $item->favorites->count() }}</span>
                 </a>
                 @endif
             </div>
             <div class="item__review-comment">
-                <img src="{{ asset('/images/吹き出しマーク.png') }}" alt="コメント">
+                <img src="{{ asset('/images/吹き出しマーク.png') }}" class="comment-icon" alt="コメント">
                 <span class="review-count">{{ $item->comments->count() }}</span>
             </div>
         </section>
 
         <div class="form-order">
-            {{--<form class="form" action="{{ route('purchase') }}" method="get">
-            @csrf
-            <input type="hidden" name="id" value="{{ $item->id }}">
-            <div class="form__button">
-                <button class="form__button-submit" type="submit">購入手続きへ</button>
-            </div>
-            </form>--}}
+            <form class="form">
+                @csrf
+                <input type="hidden" name="id" value="{{ $item->id }}">
+                <div class="form__button">
+                    <button class="form__button-submit" type="submit">購入手続きへ</button>
+                </div>
+            </form>
         </div>
 
         <section class="item__description">
-            <h3 class="item__description-label">商品説明</h3>
+            <h3>商品説明</h3>
             <p class="item__description-content">{{ $item->description }}</p>
         </section>
 
         <section class="item__information">
-            <h3 class="item__information-label">商品の情報</h3>
-            <div class="item__information-category">
-                <p class="item__information-sublabel">カテゴリー</p>
-                {{--カテゴリーを持ってくる、表示方法検討--}}
-            </div>
-            <div class="item__information-condition">
-                <p class="item__information-sublabel">商品の状態</p>
-            </div>
+            <h3>商品の情報</h3>
+            <dl class="item__information-list">
+                <dd>カテゴリー
+                    <span class="item__information-content--category">
+                        @foreach($item->categories as $category)
+                        <span class="category-name">{{ $category->content }}</span>
+                        @endforeach
+                    </span>
+                </dd>
+                <dd>商品の状態
+                    <span class="item__information-content--condition">{{ $item->condition->status }}</span>
+                </dd>
+            </dl>
         </section>
 
         <article class="item__review">
             <h3 class="item__review-posted--label">コメント({{ $item->comments->count() }})</h3>
             @foreach($item->comments as $comment)
             <div class="item__review-posted">
-                <img class="comment-avatar" src="{{ asset('storage/' . $comment->user->avatar) }}" alt="{{ $comment->user->name }}のアバター">
-                <span class="item__review-posted--user">{{ $comment->user->name }}</span>
+                <div class="item__review-user">
+                    <img class="comment-avatar" src="{{ asset('storage/' . $comment->user->avatar) }}" alt="{{ $comment->user->name }}のアバター">
+                    <span class="user-name">{{ $comment->user->name }}</span>
+                </div>
                 <p class="item__review-posted--content">{{ $comment->review }}</p>
             </div>
             @endforeach
         </article>
-        
+
         <section class="item__comment-preview">
-            <label for="review" class="item__comment-label">商品へのコメント</label>
-            <textarea class="item__comment-content" name="review" id="review"></textarea>
+            <form class="form" action="{{ route('item.comment', ['id'=>$item->id]) }}" method="post">
+                @csrf
+                <label for="review" class="item__comment-label">商品へのコメント</label>
+                <textarea class="item__comment-content" name="review" id="review">{{ old('review') }}</textarea>
+                <input type="hidden" name="item_id" value="{{ $item->id }}">
+                <div class="form__button">
+                    <button class="form__button-submit" type="submit">コメントを送信する</button>
+                </div>
+            </form>
         </section>
     </div>
 </article>
+@endsection
