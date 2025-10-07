@@ -55,7 +55,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function favoriteItems(){
+    public function favorites(){
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
 
