@@ -31,6 +31,7 @@ class Item extends Model
     public function favorites(){
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
+
     //ログインユーザがいいねしているかの判定
     public function isLikedByAuthUser():bool{
         $id = Auth::id();

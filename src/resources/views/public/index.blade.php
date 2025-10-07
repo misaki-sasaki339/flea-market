@@ -8,24 +8,35 @@
 @section('content')
 <div class="content">
     <div class="tab-wrapper">
-            <input class="tab__label-input" type="radio" name="tab_btn" id="tab1" checked>
-            <input class="tab__label-input" type="radio" name="tab_btn" id="tab2">
+        <input class="tab__label-input" type="radio" name="tab_btn" id="tab1" {{ $tab === 'recommend' ? 'checked' : '' }} />
+        <input class="tab__label-input" type="radio" name="tab_btn" id="tab2" {{ $tab === 'mylist' ? 'checked' : '' }} />
         <div class="tab__label">
-            <label for="tab1">おすすめ</label>
-            <label for="tab2">マイリスト</label>
+            <label for="tab1" onclick="location.href='/'">おすすめ</label>
+            <label for="tab2" onclick="location.href='/?tab=mylist'">マイリスト</label>
         </div>
         <div class="tab__content" id="content1">
             @foreach($items as $item)
             <div class="tab__content-item">
                 <a class="item-link" href="{{ route('item.show', $item) }}">
-                <img src="{{ asset('storage/' . $item->img) }}" alt="商品画像">
+                    <img src="{{ asset('storage/' . $item->img) }}" alt="商品画像">
                 </a>
                 <p class="item-name">{{ $item->name }}</p>
             </div>
             @endforeach
         </div>
         <div class="tab__content" id="content2">
-            <p>空白</p>
+            @if(auth()->check())
+            @foreach($items as $item)
+            <div class="tab__content-item">
+                <a class="item-link" href="{{ route('item.show', $item) }}">
+                    <img src="{{ asset('storage/' . $item->img) }}" alt="商品画像">
+                </a>
+                <p class="item-name">{{ $item->name }}</p>
+            </div>
+            @endforeach
+            @else
+            <p></p>
+            @endif
         </div>
     </div>
 </div>
