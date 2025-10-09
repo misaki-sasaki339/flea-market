@@ -1,48 +1,59 @@
 @extends('layouts.app')
 
 @section('css')
+@parent
 <link rel="stylesheet" href="{{ asset('css/auth/order/purchase.css') }}">
 @endsection
 
 @section('content')
-<div class="content">
-    <form action="{{ route('') }}" class="form" method="post">
+<section class="content">
+    <form class="form">
         @csrf
-        <div class="form-group">
-            <img src="" alt="">
-            <!--商品名の表示-->
-            <!--値段の表示-->
-        </div>
-        <div class="form-group">
-            <div class="form-group__title">
-                <p>支払い方法</p>
-            </div>
-            <div class="form-group__content">
-                <!--select-->
-            </div>
-            <div class="form-group">
-                <div class="form-group__title">
-                    <p>配送先
-                        <span><a href="{{ route('') }}">変更する</a></span>
-                    </p>
-                </div>
+        <div class="form__left">
+            <section class="form-group">
+                <img class="item__img" src="{{ asset('storage/' . $item->img) }}" alt="{{ $item->name }}">
+                <p class="form__label--item">{{ $item->name }}</p>
+                <p class="item__price-label">¥
+                    <span class="item-price">{{ number_format($item->price) }}</span>
+                </p>
+            </section>
+            <section class="form-group">
+                <label for="payment" class="form__label--item">支払い方法</label>
+                <select name="payment" id="payment">
+                    <option value="" disabled selected>選択してください</option>
+                    <option value="konbini">コンビニ払い</option>
+                    <option value="card">カード払い</option>
+                </select>
+            </section>
+            <section class="form-group">
+                <p class="form__label--item">配送先<span><a href="">変更する</a></span></p>
                 <div class="form-group__content">
-                    <!--住所の出力-->
+                    <p class="postcode">〒{{ $user->postcode }}</p>
+                    <p class="address">{{ $user->address}} {{ $user->building }}</p>
                 </div>
-            </div>
+            </section>
+        </div>
+        <div class="form__right">
             <table class="form-group__table">
                 <tr>
                     <th>商品代金</th>
-                    <td></td>
+                    <td>¥<span class="item-price">{{ number_format($item->price) }}</span></td>
                 </tr>
                 <tr>
                     <th>支払い方法</th>
-                    <td></td>
+                    <td id="result">選択してください</td>
                 </tr>
             </table>
+            <script>
+                document.getElementById('payment').onchange = function() {
+                    const text = this.options[this.selectedIndex].text;
+                    document.getElementById('result').textContent = text;
+                };
+            </script>
             <div class="form__button">
-                <button class="form__button-submit"type="submit">購入する</button>
+                <button class="form__button-submit" type="submit">購入する</button>
             </div>
         </div>
     </form>
-</div>
+</section>
+@endsection

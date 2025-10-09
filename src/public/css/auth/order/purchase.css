@@ -1,0 +1,61 @@
+.content {
+  margin: 48px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.form__left {
+  padding-right: 48px;
+}
+
+.form-group {
+  display: flex;
+  border-bottom: 1px solid #000000;
+}
+
+.item__img {
+  width: 160px;
+  height: 160px;
+}
+
+.item__price-label {}
+
+.item-price {}
+
+.form__label--item {}
+
+option{
+  background-color: #636769;
+}
+
+.form__right {}
+
+.form-group__table {
+  border: 1px solid #000000;
+}
+
+tr {}
+
+th {}
+
+td {}
+
+.form__button {}
+
+.form__button-submit {
+  width: 100%;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #FF5555;
+  color: #FFFFFF;
+  font-weight: bold;
+  border: none;
+  font-size: 16px;
+}
+
+.form__button-submit:hover {
+  transform: translateY(-5px);
+}

@@ -42,7 +42,7 @@
         </section>
 
         <div class="form-order">
-            <form class="form">
+            <form class="form" action="{{ route('purchase', $item) }}" method="get">
                 @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 <div class="form__button">

@@ -34,7 +34,7 @@
         </fieldset>
 
         <fieldset class="form-group">
-            <label for="postcode" class="fform__label--item">郵便番号</label>
+            <label for="postcode" class="form__label--item">郵便番号</label>
             <input class="form__input @error('postcode') is-invalid @enderror" id="postcode" type="text" name="postcode" value="{{ old('postcode', $user->postcode) }}" />
             @error('postcode')
             <p class="error-message">{{ $message }}</p>

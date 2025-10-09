@@ -50,7 +50,7 @@ Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('myp
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 //購入関連
-Route::get('/purchase/{item}',[PurchaseController::class, 'index'])->name('purchase');
+Route::get('/purchase/{item}',[PurchaseController::class, 'create'])->name('purchase');
 Route::post('/purchase/{item}',[PurchaseController::class, 'store'])->name('purchase.store');
 Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
 Route::put('/purchase/address/{item}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
