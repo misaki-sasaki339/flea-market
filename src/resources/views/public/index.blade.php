@@ -11,8 +11,8 @@
         <input class="tab__label-input" type="radio" name="tab_btn" id="tab1" {{ $tab === 'recommend' ? 'checked' : '' }} />
         <input class="tab__label-input" type="radio" name="tab_btn" id="tab2" {{ $tab === 'mylist' ? 'checked' : '' }} />
         <div class="tab__label">
-            <label for="tab1" onclick="location.href='/'">おすすめ</label>
-            <label for="tab2" onclick="location.href='/?tab=mylist'">マイリスト</label>
+            <label for="tab1" onclick="location.href='{{ route('home', ['tab' => 'recommend', 'keyword' => request('keyword')]) }}'">おすすめ</label>
+            <label for="tab2" onclick="location.href='{{ route('home', ['tab' => 'mylist', 'keyword' => request('keyword')]) }}'">マイリスト</label>
         </div>
         <div class="tab__content" id="content1">
             @foreach($items as $item)
