@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function index(Request $request){
         //tabパラメータの分岐：指定がなければrecommendをセット
         $tab = $request->query('tab', 'recommend');
-        
+
         //マイリスト選択時お気に入り商品を表示、そうでない場合は全商品表示
         if ($tab === 'mylist'){
             $items =  auth()->check() ? auth()->user()->favorites : collect();
@@ -27,5 +27,11 @@ class HomeController extends Controller
     public function show(Item $item){
         $item->load('comments.user');
         return view('public.exhibition', compact('item'));
+    }
+
+    //商品検索機能
+    public function search(Request $request){
+        $items = Item::keyword($request->input('keyword'))->get();
+        return view('public.index', compact('items'));
     }
 }

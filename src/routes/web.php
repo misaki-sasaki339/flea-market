@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +15,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
-use App\Http\Requests\CommentRequest;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\StripeController;
 //
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +33,7 @@ use App\Http\Requests\CommentRequest;
 //非会員用ページ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/item/{item}', [HomeController::class, 'show'])->name('item.show');
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
 
 //会員登録・ログイン用ページ
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
@@ -50,10 +50,13 @@ Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('myp
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 //購入関連
+Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
+Route::patch('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
 Route::get('/purchase/{item}',[PurchaseController::class, 'create'])->name('purchase');
 Route::post('/purchase/{item}',[PurchaseController::class, 'store'])->name('purchase.store');
-Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
-Route::put('/purchase/address/{item}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
+Route::get('/checkout/{order}',[StripeController::class, 'checkout'])->name('payment.checkout');
+Route::get('/success', [StripeController::class, 'success'])->name('payment.success');
+Route::get('/cancel', [StripeController::class, 'cancel'])->name('payment.cancel');
 
 //出品関連
 Route::get('/sell', [SellController::class, 'create'])->name('sell.create');

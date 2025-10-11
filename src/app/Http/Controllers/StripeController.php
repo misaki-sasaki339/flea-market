@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Order;
+use Illuminate\Support\Facades\Session;
+use Stripe\Stripe;
+use Stripe\Checkout\Session as StripeSession;
+
+class StripeController extends Controller
+{
+    public function checkout(Request $request, Order $order)
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $item = $order->item;
+
+        $paymentMethod = session('payment_method');
+        $stripeSession = StripeSession::create([
+            'payment_method_types' => [$paymentMethod],
+            'line_items' => [[
+                'price' => $item->stripe_price_id,
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => route('payment.success', ['order' => $order->id]),
+            'cancel_url' => route('payment.cancel', ['order' => $order->id]),
+        ]);
+
+        return redirect($stripeSession->url);
+    }
+    public function success()
+    {
+        return '決済成功！Stripeのチェックアウトから戻ってきました。';
+    }
+
+    public function cancel()
+    {
+        return '決済キャンセルされました。';
+    }
+}

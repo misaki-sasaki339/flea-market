@@ -16,7 +16,8 @@ class Item extends Model
         'name',
         'bland',
         'description',
-        'price'
+        'price',
+        'stripe_price_id',
     ];
 
     //リレーション
@@ -52,5 +53,12 @@ class Item extends Model
 
     public function user(){
         return $this->belongsTo('App\Models\User');
+    }
+
+    //ローカルスコープ
+    public function scopeKeyword($query, $keyword){
+        if(!empty($keyword)){
+            $query->where('name', 'like', '%' . $keyword . '%');
+        }
     }
 }

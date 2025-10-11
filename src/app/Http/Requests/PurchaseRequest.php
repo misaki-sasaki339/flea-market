@@ -25,7 +25,6 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment'=>'required',
-            'address'=>'required|exists:profiles,id',
         ];
     }
 
@@ -33,8 +32,6 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment.required'=>'支払い方法を選択してください',
-            'address.required'=>'配送先が登録されていません',
-            'address.exists'=>'住所が登録されていません マイページの『プロフィールを編集』をご確認ください'
         ];
     }
 }
