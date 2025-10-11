@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -11,16 +12,35 @@ class HomeController extends Controller
 {
     //商品一覧ページの表示
     public function index(Request $request){
-        //tabパラメータの分岐：指定がなければrecommendをセット
         $tab = $request->query('tab', 'recommend');
+        $keyword = $request->query('keyword');
 
-        //マイリスト選択時お気に入り商品を表示、そうでない場合は全商品表示
-        if ($tab === 'mylist'){
-            $items =  auth()->check() ? auth()->user()->favorites : collect();
-        }else{
-            $items = Item::all();
+        //未ログインかつマイリスト表示は空で返す
+        if ($tab === 'mylist' && !auth()->check()){
+            return view('public.index', [
+                'items' => collect(), //空配列
+                'tab' => $tab,
+                'keyword' => $keyword
+            ]);
         }
-        return view('public.index', compact('items', 'tab'));
+
+        //認証済みユーザーのマイリスト表示
+        if ($tab === 'mylist'){
+            $query = auth()->user()->favorites();
+        }else{ //おすすめ表示
+            $query = Item::query();
+        }
+
+        //検索機能
+        if (filled($keyword)){
+            $query->keyword($keyword);
+        }
+        return view('public.index', [
+            'items' => $query->get(),
+            'tab' => $tab,
+            'keyword' => $keyword,
+        ]);
+
     }
 
     //商品詳細ページの表示
@@ -31,7 +51,8 @@ class HomeController extends Controller
 
     //商品検索機能
     public function search(Request $request){
-        $items = Item::keyword($request->input('keyword'))->get();
-        return view('public.index', compact('items'));
+        $tab = $request->query('tab', 'recommend'); //指定がなければおすすめ表示
+        $keyword = $request->input('keyword');
+        return redirect()->route('home', ['tab' => $tab, 'keyword' => $keyword]);
     }
 }
