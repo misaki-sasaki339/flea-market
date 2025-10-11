@@ -9,13 +9,18 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'item_id',
+    ];
+
     //リレーション
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
-    public function items(){
-        return $this->hasOne('App\Models\Item');
+    public function item(){
+        return $this->belongsTo('App\Models\Item');
     }
 
     public function shipments(){

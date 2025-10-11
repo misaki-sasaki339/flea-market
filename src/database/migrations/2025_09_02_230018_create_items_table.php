@@ -22,6 +22,7 @@ class CreateItemsTable extends Migration
             $table->string('brand')->nullable();
             $table->string('description');
             $table->integer('price');
+            $table->string('stripe_price_id')->nullable();
             $table->timestamps();
         });
     }

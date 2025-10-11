@@ -7,29 +7,39 @@
 
 @section('content')
 <section class="content">
-    <form class="form">
+    <form class="form" action="{{ route('purchase.store', $item) }}" method="post">
         @csrf
         <div class="form__left">
-            <section class="form-group">
+            <section class="form-group__item">
                 <img class="item__img" src="{{ asset('storage/' . $item->img) }}" alt="{{ $item->name }}">
-                <p class="form__label--item">{{ $item->name }}</p>
-                <p class="item__price-label">¥
-                    <span class="item-price">{{ number_format($item->price) }}</span>
-                </p>
+                <div class="item-info">
+                    <p class="form__label--item-name">{{ $item->name }}</p>
+                    <p class="item__price-label">¥
+                        <span class="item-price">{{ number_format($item->price) }}</span>
+                    </p>
+                </div>
             </section>
-            <section class="form-group">
-                <label for="payment" class="form__label--item">支払い方法</label>
+            <section class="form-group__payment">
+                <label for="payment" class="form__label--title">支払い方法</label>
                 <select name="payment" id="payment">
                     <option value="" disabled selected>選択してください</option>
                     <option value="konbini">コンビニ払い</option>
                     <option value="card">カード払い</option>
                 </select>
+                @error('payment')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </section>
-            <section class="form-group">
-                <p class="form__label--item">配送先<span><a href="">変更する</a></span></p>
+            <section class="form-group__address">
+                <p class="form__label">
+                    <span class="form__label--title">配送先</span><a class="address-change__link" href="{{ route('purchase.address.edit', ['item_id' => $item->id]) }}">変更する</a></span>
+                </p>
                 <div class="form-group__content">
-                    <p class="postcode">〒{{ $user->postcode }}</p>
-                    <p class="address">{{ $user->address}} {{ $user->building }}</p>
+                    @php
+                    $shipping = session()->only(['postcode', 'address', 'building']);
+                    @endphp
+                    <p class="postcode">〒{{ $shipping['postcode'] ?? $user->postcode }}</p>
+                    <p class="address">{{ $shipping['address'] ?? $user->address}} {{ $shipping['building'] ?? $user->building }}</p>
                 </div>
             </section>
         </div>

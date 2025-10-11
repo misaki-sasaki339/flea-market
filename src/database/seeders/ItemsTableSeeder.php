@@ -23,6 +23,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'Rolax',
                 'description'=>'スタイリッシュなデザインのメンズ腕時計',
                 'price'=>'15000',
+                'stripe_price_id'=>'price_1SFdj7IF9VwpA1eugWUGBACN',
             ],
             [
                 'img' => 'img/item/HDD+Hard+Disk.jpg',
@@ -32,6 +33,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'西芝',
                 'description'=>'高速で信頼性の高いハードディスク',
                 'price'=>'5000',
+                'stripe_price_id'=>'price_1SFdjcIF9VwpA1euUdtR8N2z',
             ],
             [
                 'img' => 'img/item/onion.jpg',
@@ -41,6 +43,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'なし',
                 'description'=>'新鮮な玉ねぎ3束のセット',
                 'price'=>'300',
+                'stripe_price_id'=>'price_1SFdk8IF9VwpA1eu1L4vQFFH',
             ],
             [
                 'img' => 'img/item/Leather+Shoes+Product+Photo.jpg',
@@ -50,6 +53,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'クラシックなデザインの革靴',
                 'price'=>'4000',
+                'stripe_price_id'=>'price_1SFdkTIF9VwpA1euczhmXCTN',
             ],
             [
                 'img' => 'img/item/Living+Room+Laptop.jpg',
@@ -59,6 +63,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'高性能なノートパソコン',
                 'price'=>'45000',
+                'stripe_price_id'=>'price_1SFdknIF9VwpA1eukacGEMoB',
             ],
             [
                 'img' => 'img/item/Music+Mic+4632231.jpg',
@@ -67,7 +72,8 @@ class ItemsTableSeeder extends Seeder
                 'name'=>'マイク',
                 'brand'=>'',
                 'description'=>'高音質のレコーディング用マイク',
-                'price'=>'8000', 
+                'price'=>'8000',
+                'stripe_price_id'=>'price_1SFdl4IF9VwpA1euBoXenfW9',
             ],
             [
                 'img' => 'img/item/Purse+fashion+pocket.jpg',
@@ -76,7 +82,8 @@ class ItemsTableSeeder extends Seeder
                 'name'=>'ショルダーバッグ',
                 'brand'=>'',
                 'description'=>'おしゃれなショルダーバッグ',
-                'price'=>'3500', 
+                'price'=>'3500',
+                'stripe_price_id'=>'price_1SFdmJIF9VwpA1euXfQQLLpT',
             ],
             [
                 'img' => 'img/item/Tumbler+souvenir.jpg',
@@ -85,7 +92,8 @@ class ItemsTableSeeder extends Seeder
                 'name'=>'タンブラー',
                 'brand'=>'なし',
                 'description'=>'使いやすいタンブラー',
-                'price'=>'500', 
+                'price'=>'500',
+                'stripe_price_id'=>'price_1SFdmlIF9VwpA1eu2XIOfx3S',
             ],
             [
                 'img' => 'img/item/Waitress+with+Coffee+Grinder.jpg',
@@ -94,7 +102,8 @@ class ItemsTableSeeder extends Seeder
                 'name'=>'コーヒーミル',
                 'brand'=>'Starbacks',
                 'description'=>'手動のコーヒーミル',
-                'price'=>'4000', 
+                'price'=>'4000',
+                'stripe_price_id'=>'price_1SFdn7IF9VwpA1eujdXEjhqy',
             ],
             [
                 'img' => 'img/item/外出メイクアップセット.jpg',
@@ -104,6 +113,7 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'便利なメイクアップセット',
                 'price'=>'2500',
+                'stripe_price_id'=>'price_1SFdnSIF9VwpA1eumysZc7Ld',
             ],
         ];
         DB::table('items')->insert($params);
