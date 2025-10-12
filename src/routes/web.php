@@ -17,6 +17,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\StripeController;
+
+use Illuminate\Support\Facades\Mail;
 //
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +70,11 @@ Route::get('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->
 
 //コメント機能
 Route::post('/item/comment/{id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');
+
+//mailhog
+Route::get('/mail-test', function () {
+    Mail::raw('テストメールです！', function ($message) {
+        $message->to('test@example.com')->subject('MailHogテスト');
+    });
+    return 'メール送信完了！';
+});

@@ -43,6 +43,9 @@ a {
 }
 
 button.header-nav__link-logout {
+    background: none;
+    border: none;
+    color: #ffffff;
     font-size: 16px;
     text-decoration: none;
     cursor: pointer;
