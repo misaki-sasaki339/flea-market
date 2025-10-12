@@ -14,7 +14,7 @@ class Item extends Model
         'img',
         'condition_id',
         'name',
-        'bland',
+        'brand',
         'description',
         'price',
         'stripe_price_id',
