@@ -1,0 +1,64 @@
+.profile-content{
+
+}
+
+.avatar_img img{
+
+}
+
+.name{
+
+}
+
+.profile__edit{
+
+}
+
+.profile__edit-button{
+
+}
+
+.tab__label label:nth-child(1) {
+    margin-left: 140px;
+}
+
+.tab__label{
+    margin-top: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #5F5F5F;
+}
+
+.tab__label-input{
+    appearance: none;
+}
+
+.tab__label label{
+    cursor: pointer;
+    margin-right: 56px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5F5F5F;
+}
+
+.tab__content{
+    display: none;
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 24px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+#tab1:checked ~ .tab__label label[for="tab1"]{
+    color: #FF0000;
+}
+
+#tab1:checked ~  #content1{
+    display: grid;
+}
+
+#tab2:checked ~ .tab__label label[for="tab2"]{
+    color: #FF0000;
+}
+#tab2:checked ~ #content2{
+    display: grid;
+}

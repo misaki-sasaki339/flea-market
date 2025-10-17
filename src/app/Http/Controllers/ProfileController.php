@@ -6,22 +6,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Item;
 
 
 class ProfileController extends Controller
 {
     //プロフィール画面の表示
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
-        $sales = $user->sales()->orderBy('created_at', 'desc')->get();
-        $orders = $user->orders()->orderBy('created_at', 'desc')->get();
-        return view('auth.mypage', compact('user', 'sales', 'orders'));
+        $page = $request->query('page', 'sell');
+
+        if ($page === 'sell'){ //出品商品の表示
+            $items = Item::where('user_id', $user->id)->get();
+        }elseif($page === 'buy'){ //購入商品の表示
+            $orders = $user->orders()->with('item')->get();
+            $items = $orders->pluck('item');
+        }
+        return view('auth.mypage', compact('user','items', 'page'));
     }
 
     //プロフィールの編集画面の表示
     public function edit(){
-        //$user = Auth::user();
-        $user = \App\Models\User::first();
+        $user = Auth::user();
         return view('auth.edit', compact('user'));
     }
 

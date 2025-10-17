@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Cashier\Billable;
+use App\Notifications\VerifyEmailNotification;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
     use Billable;
@@ -48,20 +49,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //メール認証
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmailNotification());
+    }
+
     //リレーション
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany('App\Models\Order');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function favorites(){
+    public function favorites()
+    {
         return $this->belongsToMany(Item::class, 'favorites')->withTimestamps();
     }
 
-    public function items(){
+    public function items()
+    {
         return $this->hasMany('App\Models\Item');
     }
 }
