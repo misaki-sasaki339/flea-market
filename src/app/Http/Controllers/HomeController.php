@@ -24,11 +24,13 @@ class HomeController extends Controller
             ]);
         }
 
-        //認証済みユーザーのマイリスト表示
-        if ($tab === 'mylist'){
+        if ($tab === 'mylist'){ //認証済みユーザーのマイリスト表示
             $query = auth()->user()->favorites();
         }else{ //おすすめ表示
             $query = Item::query();
+            if(Auth::check()){
+                $query->where('user_id', '!=', Auth::id()); //商品のuser_idと認証user_idが一致する場合は除外
+            }
         }
 
         //検索機能

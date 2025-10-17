@@ -12,49 +12,58 @@ use App\Http\Requests\PurchaseRequest;
 class PurchaseController extends Controller
 {
     //商品購入画面の表示
-    public function create(Item $item){
+    public function create(Item $item)
+    {
         $user = Auth::user();
         return view('auth.order.purchase', compact('item', 'user'));
     }
 
     //商品購入機能
-    public function store(PurchaseRequest $request, Item $item){
+    public function store(PurchaseRequest $request, Item $item)
+    {
 
         $user = Auth::user();
-        if (empty($user->address)){
+        if (empty($user->address)) {
             return back()->withErrors([
                 'address' => '住所が登録されていません マイページの『プロフィールを編集』をご確認ください',
             ]);
         }
 
-        $order = Order::create([
-            'user_id' => Auth()->id(),
-            'item_id'=> $item->id,
-        ]);
+        if ($item->stock > 0) {
+            $item->stock = 0;
+            $item->save();
 
-        $request->session()->put('payment_method', $request->payment);
-        $request->session()->save();
-        return redirect()->route('payment.checkout', ['order' => $order->id]);
+            $order = Order::create([
+                'user_id' => Auth()->id(),
+                'item_id' => $item->id,
+            ]);
+
+            $request->session()->put('payment_method', $request->payment);
+            $request->session()->save();
+            return redirect()->route('payment.checkout', ['order' => $order->id]);
+        }
     }
 
     //住所変更画面の表示
-    public function editAddress(Request $request){
+    public function editAddress(Request $request)
+    {
         $user = Auth::user();
 
-        if($request->has('item_id')){
-            session(['item_id'=>$request->item_id]);
+        if ($request->has('item_id')) {
+            session(['item_id' => $request->item_id]);
         }
         return view('auth.order.address', compact('user'));
     }
 
     //変更先住所の登録
-    public function updateAddress(AddressRequest $request){
+    public function updateAddress(AddressRequest $request)
+    {
         $request->session()->put([
             'postcode' => $request->postcode,
             'address' => $request->address,
             'building' => $request->building,
         ]);
         $itemId = $request->input('item_id');
-        return redirect()->route('purchase', ['item'=>$itemId]);
+        return redirect()->route('purchase', ['item' => $itemId]);
     }
 }

@@ -6,21 +6,24 @@ use Illuminate\Http\Request;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\RegisterRequest;
+use Illuminate\Auth\Events\Registered;
 
 
 class UserController extends Controller
 {
     public function store(RegisterRequest $request)
     {
-        //新規ユーザーを登録→ログイン
+        //新規ユーザーを登録
         $input = $request->validated();
         $createUser = new CreateNewUser();
         $user = $createUser->create($input);
+
+        //認証メールの送信
+        event(new Registered($user));
+
         Auth::login($user);
 
-        //プロフィール編集画面にリダイレクト
-        return redirect()->route('mypage.edit');
+        //認証メール送信完了画面
+        return redirect()->route('verification.notice');
     }
-
-    
 }

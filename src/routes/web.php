@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Route;
 //認証関連
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 //コントローラー
 use App\Http\Controllers\HomeController;
@@ -42,6 +45,45 @@ Route::get('/register', [RegisteredUserController::class, 'create'])->name('regi
 Route::post('/register', [UserController::class, 'store'])->name('register.store');
 Route::get('/login', [LoginController::class, 'create'])->name('login');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+
+//メール認証
+//メール確認の通知
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+//認証チェック
+Route::get('/verification/check', function (Request $request) {
+    $user = Auth::user();
+
+    if ($user && $user->hasVerifiedEmail()) {
+        return redirect()->route('verification.success');
+    }
+    return back()->with('message', 'まだ認証が完了していません。メール内のリンクをクリックしてください。');
+})->middleware('auth')->name('verification.check');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill(); // ここで email_verified_at に日時が入る
+    return redirect()->route('verification.success');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+//メール認証の完了
+Route::get('/verification/success', function () {
+    return view('auth.verification-success');
+})->middleware(['auth', 'verified'])->name('verification.success');
+
+//メール確認のハンドラ
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('verification.success');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+//メール確認の再送信
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //認証後ページ
 //Route::middleware('auth')->group(function (){

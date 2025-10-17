@@ -21,6 +21,7 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->string('brand')->nullable();
             $table->string('description');
+            $table->unsignedInteger('stock')->default(1);
             $table->integer('price');
             $table->string('stripe_price_id')->nullable();
             $table->timestamps();

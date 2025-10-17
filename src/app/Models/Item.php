@@ -16,6 +16,7 @@ class Item extends Model
         'name',
         'brand',
         'description',
+        'stock',
         'price',
         'stripe_price_id',
     ];

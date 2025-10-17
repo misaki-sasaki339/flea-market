@@ -22,8 +22,4 @@ class Order extends Model
     public function item(){
         return $this->belongsTo('App\Models\Item');
     }
-
-    public function shipments(){
-        return $this->hasOne('App\Models\Shipment');
-    }
 }

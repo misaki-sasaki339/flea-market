@@ -10,14 +10,16 @@ use App\Http\Requests\ExhibitionRequest;
 
 class SellController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         $categories = Category::all();
         $conditions = Condition::all();
-       
+
         return view('auth.sell', compact('categories', 'conditions'));
     }
 
-    public function store(ExhibitionRequest $request){
+    public function store(ExhibitionRequest $request)
+    {
         $items = $request->only('img', 'condition_id', 'name', 'brand', 'description', 'price');
         $items['category_ids'] = $request->category_ids;
 
