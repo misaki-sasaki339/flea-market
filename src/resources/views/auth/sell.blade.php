@@ -13,7 +13,8 @@
 
 @section('content')
 <div class="content">
-    <form class="form" action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
+    {{--商品画像の仮アップロード--}}
+    <form class="form" action="{{ route('sell.tempUpload') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group__img">
             <div class="form-group__title">
@@ -22,13 +23,24 @@
             <div class="form-group__content">
                 <div class="form-group__input-img">
                     <label for="img" class="form__button-upload">画像を選択する</label>
-                    <input class="form__input-file" type="file" id="img" name="img" accept="image/png, image/jpeg" >
+                    <input class="form__input-file" type="file" id="img" name="img" accept="image/png, image/jpeg" onchange="this.form.submit()">
                     @error('img')
                     <p class="error-message">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
         </div>
+    </form>
+    @if(session('temp_img'))
+    <div class="preview">
+        <img src="{{ asset('storage/tmp/' . session('temp_img')) }}" >
+    </div>
+    @endif
+
+    {{--本登録--}}
+    <form action="{{ route('sell.store') }}" class="form" method="post">
+        @csrf
+        <input type="hidden" name="temp_img" value="{{ session('temp_img') }}">
         <div class="form-group__attributes">
             <p class="form__label">商品の詳細</p>
             <div class="form-group">

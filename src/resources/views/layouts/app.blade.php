@@ -25,7 +25,7 @@
             </form>
         </li>
         <li><a class="header-nav__link-mypage" href="{{ route('mypage') }}">マイページ</a></li>
-        <li><a class="header-nav__link-sell" href="">出品</a></li>
+        <li><a class="header-nav__link-sell" href="{{ route('sell.create') }}">出品</a></li>
         @endauth
 
         @guest
