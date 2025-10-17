@@ -104,6 +104,7 @@ Route::get('/cancel', [StripeController::class, 'cancel'])->name('payment.cancel
 
 //出品関連
 Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
+Route::post('/sell/temp-upload', [SellController::class, 'tempUpload'])->name('sell.tempUpload');
 Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 
 //いいね機能
@@ -112,11 +113,3 @@ Route::get('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->
 
 //コメント機能
 Route::post('/item/comment/{id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');
-
-//mailhog
-Route::get('/mail-test', function () {
-    Mail::raw('テストメールです！', function ($message) {
-        $message->to('test@example.com')->subject('MailHogテスト');
-    });
-    return 'メール送信完了！';
-});
