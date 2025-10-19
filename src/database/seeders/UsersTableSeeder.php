@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'モンキー・D・ルフィ',
             'email' => 'Luffy@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/ルフィー.png',
+            'avatar' => 'dummy/avatar/ルフィー.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
             'building'=>'皇居',
@@ -28,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'ロロノア・ゾロ',
             'email' => 'Zoro@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/ゾロ.png',
+            'avatar' => 'dummy/avatar/ゾロ.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'ナミ',
             'email' => 'Nami@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/ナミ.png',
+            'avatar' => 'dummy/avatar/ナミ.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'そげキング',
             'email' => 'Usopp@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/そげキング.png',
+            'avatar' => 'dummy/avatar/そげキング.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'サンジ',
             'email' => 'Sanji@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/サンジ.png',
+            'avatar' => 'dummy/avatar/サンジ.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -60,7 +60,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'トニートニー・チョッパー',
             'email' => 'Chopper@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/チョッパー.png',
+            'avatar' => 'dummy/avatar/チョッパー.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -68,7 +68,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'ニコ・ロビン',
             'email' => 'Robin@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/ニコロビン.png',
+            'avatar' => 'dummy/avatar/ニコロビン.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -76,7 +76,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'フランキー',
             'email' => 'Franky@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/フランキー.png',
+            'avatar' => 'dummy/avatar/フランキー.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);
@@ -84,7 +84,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'ブルック',
             'email' => 'Brook@example.com',
             'password' => Hash::make('password123'),
-            'avatar' => 'img/avatar/ブルック.png',
+            'avatar' => 'dummy/avatar/ブルック.png',
             'postcode'=>'100-8111',
             'address'=>'東京都千代田区千代田１−１',
         ]);

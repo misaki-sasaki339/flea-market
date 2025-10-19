@@ -16,13 +16,13 @@
         </div>
         <section class="tab__content" id="content1">
             @foreach($items as $item)
-            <x-item-card :item="$item" />
+            <x-item-card :item="$item" type="items"/>
             @endforeach
         </section>
         <section class="tab__content" id="content2">
             @if(auth()->check())
             @foreach($items as $item)
-            <x-item-card :item="$item" />
+            <x-item-card :item="$item" type="items"/>
             @endforeach
             @else
             <p></p>

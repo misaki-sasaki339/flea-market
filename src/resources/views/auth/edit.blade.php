@@ -13,18 +13,26 @@
 
 @section('content')
 <section class="content">
-    <form action="{{ route('mypage.update') }}" class="form" enctype="multipart/form-data" method="post">
+    <form action="{{ route('mypage.tempUpload') }}" class="form" enctype="multipart/form-data" method="post">
         @csrf
-        @method('PATCH')
         <fieldset class="form-group__avatar">
-            <img class="img__avatar" src="{{ asset('storage/' . $user->avatar) }}" alt="プロフィール画像">
+            <x-image :path="$user->avatar" type="avatar" />
             <label for="avatar" class="form__button-upload">画像を選択する</label>
-            <input type="file" class="form__input-img" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+            <input type="file" class="form__input-img" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="this.form.submit()"/>
             @error('avatar')
             <p class="error-message">{{ $message }}</p>
             @enderror
         </fieldset>
+    </form>
 
+    <div class="preview">
+        <img src="{{ asset('storage/tmp/' . session('temp_avatar')) }}">
+    </div>
+
+    <form action="{{ route('mypage.update') }}" class="form" method="post">
+        @csrf
+        @method('PATCH')
+        <input type="hidden" name="temp_avatar" value="{{ session('temp_avatar') }}">
         <fieldset class="form-group">
             <label for="name" class="form__label--item">ユーザー名</label>
             <input class="form__input @error('email') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name', $user->name) }}" />

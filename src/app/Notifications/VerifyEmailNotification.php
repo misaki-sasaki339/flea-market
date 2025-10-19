@@ -6,6 +6,8 @@ namespace App\Notifications;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Config;
 
 class VerifyEmailNotification extends BaseVerifyEmail
 {
@@ -15,6 +17,21 @@ class VerifyEmailNotification extends BaseVerifyEmail
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
+
+    protected function verificationUrl($notifiable)
+    {
+        $temporarySignedUrl = URL::temporarySignedRoute(
+            'verification.verify',
+            now()->addMinutes(Config::get('auth.verification.expire', 60)),
+            [
+                'id' => $notifiable->getKey(),
+                'hash' => sha1($notifiable->getEmailForVerification()),
+            ]
+        );
+
+        return $temporarySignedUrl;
+    }
+
     public function toMail($notifiable)
     {
         $verifyUrl = $this->verificationUrl($notifiable);

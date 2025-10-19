@@ -13,6 +13,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Models\User;
+use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
+use Laravel\Fortify\Http\Responses\SimpleViewResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -33,13 +35,13 @@ class FortifyServiceProvider extends ServiceProvider
 
         //ユーザー登録画面で表示するビューの指定
         Fortify::registerView(function () {
-            return view('auth.register'); 
+            return view('auth.register');
         });
 
         //ログイン画面で表示するビューの指定
         Fortify::loginView(function () {
             return view('auth.login');
-        });    
+        });
 
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
@@ -49,6 +51,10 @@ class FortifyServiceProvider extends ServiceProvider
 
         RateLimiter::for('two-factor', function (Request $request) {
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
+        });
+
+        $this->app->singleton(VerifyEmailViewResponse::class, function () {
+        return new SimpleViewResponse('auth.verify-email');
         });
     }
 }

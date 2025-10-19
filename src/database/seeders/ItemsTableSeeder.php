@@ -16,7 +16,7 @@ class ItemsTableSeeder extends Seeder
     {
         $params = [
             [
-                'img' => 'img/item/Armani+Mens+Clock.jpg',
+                'img' => 'dummy/items/Armani+Mens+Clock.jpg',
                 'user_id'=>'1',
                 'condition_id'=>'1',
                 'name'=>'腕時計',
@@ -26,7 +26,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdj7IF9VwpA1eugWUGBACN',
             ],
             [
-                'img' => 'img/item/HDD+Hard+Disk.jpg',
+                'img' => 'dummy/items/HDD+Hard+Disk.jpg',
                 'user_id'=>'2',
                 'condition_id'=>'2',
                 'name'=>'HDD',
@@ -36,7 +36,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdjcIF9VwpA1euUdtR8N2z',
             ],
             [
-                'img' => 'img/item/onion.jpg',
+                'img' => 'dummy/items/onion.jpg',
                 'user_id'=>'3',
                 'condition_id'=>'3',
                 'name'=>'玉ねぎ3束',
@@ -46,7 +46,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdk8IF9VwpA1eu1L4vQFFH',
             ],
             [
-                'img' => 'img/item/Leather+Shoes+Product+Photo.jpg',
+                'img' => 'dummy/items/Leather+Shoes+Product+Photo.jpg',
                 'user_id'=>'4',
                 'condition_id'=>'4',
                 'name'=>'革靴',
@@ -56,7 +56,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdkTIF9VwpA1euczhmXCTN',
             ],
             [
-                'img' => 'img/item/Living+Room+Laptop.jpg',
+                'img' => 'dummy/items/Living+Room+Laptop.jpg',
                 'user_id'=>'5',
                 'condition_id'=>'1',
                 'name'=>'ノートPC',
@@ -66,7 +66,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdknIF9VwpA1eukacGEMoB',
             ],
             [
-                'img' => 'img/item/Music+Mic+4632231.jpg',
+                'img' => 'dummy/items/Music+Mic+4632231.jpg',
                 'user_id'=>'6',
                 'condition_id'=>'2',
                 'name'=>'マイク',
@@ -76,7 +76,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdl4IF9VwpA1euBoXenfW9',
             ],
             [
-                'img' => 'img/item/Purse+fashion+pocket.jpg',
+                'img' => 'dummy/items/Purse+fashion+pocket.jpg',
                 'user_id'=>'7',
                 'condition_id'=>'3',
                 'name'=>'ショルダーバッグ',
@@ -86,7 +86,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdmJIF9VwpA1euXfQQLLpT',
             ],
             [
-                'img' => 'img/item/Tumbler+souvenir.jpg',
+                'img' => 'dummy/items/Tumbler+souvenir.jpg',
                 'user_id'=>'8',
                 'condition_id'=>'4',
                 'name'=>'タンブラー',
@@ -96,7 +96,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdmlIF9VwpA1eu2XIOfx3S',
             ],
             [
-                'img' => 'img/item/Waitress+with+Coffee+Grinder.jpg',
+                'img' => 'dummy/items/Waitress+with+Coffee+Grinder.jpg',
                 'user_id'=>'9',
                 'condition_id'=>'1',
                 'name'=>'コーヒーミル',
@@ -106,7 +106,7 @@ class ItemsTableSeeder extends Seeder
                 'stripe_price_id'=>'price_1SFdn7IF9VwpA1eujdXEjhqy',
             ],
             [
-                'img' => 'img/item/外出メイクアップセット.jpg',
+                'img' => 'dummy/items/外出メイクアップセット.jpg',
                 'user_id'=>'1',
                 'condition_id'=>'2',
                 'name'=>'メイクセット',

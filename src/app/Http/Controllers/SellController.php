@@ -29,7 +29,7 @@ class SellController extends Controller
         $path = $request->file('img')->store('public/tmp');
         $filename = basename($path);
         session(['temp_img' => $filename]);
-        return redirect()->route('sell.create');
+        return back();
     }
 
     //出品商品の情報をDBに保存
@@ -51,6 +51,7 @@ class SellController extends Controller
         ]);
 
         $item->categories()->sync($request->input('category_ids', []));
+        session()->forget('temp_img');
         return redirect()->route('mypage')->with('success', '商品を出品しました');;
     }
 }

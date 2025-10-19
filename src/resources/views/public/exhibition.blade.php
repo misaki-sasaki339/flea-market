@@ -8,7 +8,7 @@
 @section('content')
 <article class="content">
     <figure class="item__img">
-        <img class="img__item" src="{{ asset('storage/' . $item->img) }}" alt="{{ $item->name }}">
+        <x-image :path="$item->img" type="items" />
     </figure>
 
     <div class="item__details">
@@ -77,7 +77,7 @@
             @foreach($item->comments as $comment)
             <div class="item__review-posted">
                 <div class="item__review-user">
-                    <img class="comment-avatar" src="{{ asset('storage/' . $comment->user->avatar) }}" alt="{{ $comment->user->name }}のアバター">
+                    <x-image :path="$comment->user->avatar" type="avatar" />
                     <span class="user-name">{{ $comment->user->name }}</span>
                 </div>
                 <p class="item__review-posted--content">{{ $comment->review }}</p>

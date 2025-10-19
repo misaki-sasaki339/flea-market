@@ -1,8 +1,15 @@
+{{-- テスト用：この行を item-card.blade.php の上部に一時的に入れる --}}
+{{ $item->img }}
+
+@props([
+    'item',
+    'type' => 'items'
+])
 <div class="item-card">
     <div class="tab__content-item">
         <a class="item-link" href="{{ route('item.show', ['item' => $item->id]) }}">
             <div class="item-image-wrapper">
-                <img src="{{ asset('storage/' . $item->img) }}" alt="商品画像">
+                <x-image :path="$item->img" :type="$type" />
 
                 @if($item->stock === 0)
                 <div class="sold-overlay">
