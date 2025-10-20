@@ -1,6 +1,3 @@
-{{-- テスト用：この行を item-card.blade.php の上部に一時的に入れる --}}
-{{ $item->img }}
-
 @props([
     'item',
     'type' => 'items'

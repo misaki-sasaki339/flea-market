@@ -1,0 +1,36 @@
+.verification-success{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 64px);
+}
+
+h2{
+    font-size: 32px;
+    margin-bottom: 48px;
+    margin-top: 0;
+}
+
+.message{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 48px;
+    margin-top: 0;
+}
+
+.form__button-submit{
+    width:150px;
+    height: 40px;
+    border-radius: 3px;
+    background-color: #FF5555;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form__button-submit:hover {
+    transform: translateY(-5px);
+}

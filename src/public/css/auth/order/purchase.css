@@ -1,5 +1,5 @@
 .content {
-    margin: 48px;
+    margin: 80px;
 }
 
 .form {
@@ -8,7 +8,7 @@
 }
 
 .form__left {
-    padding-right: 48px;
+    padding-right: 80px;
 }
 
 .form-group__item {
@@ -16,6 +16,11 @@
     border-bottom: 1px solid #000000;
     padding-bottom: 48px;
 }
+
+.tab__content-item {
+    margin: 0;
+}
+
 select#payment {
     margin: 32px;
     height: 32px;
@@ -33,10 +38,14 @@ select#payment {
     border-bottom: 1px solid #000000;
 }
 
-.item__img {
+.image--items {
     width: 240px;
     height: 240px;
-    margin-right: 42px;
+    margin-right: 60px;
+}
+
+p.item-name {
+    display: none;
 }
 
 .item__price-label {
@@ -96,37 +105,36 @@ p.address {
     margin: 16px 0;
 }
 
-.form__right {
-}
-
 .form-group__table {
     width: 100%;
     font-size: 20px;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 tr {
     height: 100px;
 }
 
-th {
-        border: 1px solid #000000;
-    border-right: none;
-    font-weight: normal;
-}
-
+th,
 td {
-        border: 1px solid #000000;
-    border-left: none;
+    border: 1px solid #000000;
+    font-weight: normal;
+    width: 50%;
     text-align: center;
+    vertical-align: middle;
 }
 
-.item-price{
-        font-size: 24px;
+.form-group__table td {
+    border-left: none !important;
+}
+
+.form-group__table th {
+    border-right: none !important;
 }
 
 .form__button {
-        margin-top: 48px;
+    margin-top: 48px;
 }
 
 .form__button-submit {

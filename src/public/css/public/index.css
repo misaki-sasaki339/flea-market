@@ -22,16 +22,9 @@
 
 .tab__content{
     display: none;
-    max-width: 1200px;
     margin: 32px auto;
     padding: 0 24px;
     grid-template-columns: repeat(4, 1fr);
-}
-
-.tab__content-item{
-    display: flex;
-    flex-direction: column;
-    margin: 32px;
 }
 
 .item-link{

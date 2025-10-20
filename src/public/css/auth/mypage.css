@@ -1,64 +1,79 @@
-.profile-content{
-
+.profile {
+    display: flex;
+    margin: 32px 200px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.avatar_img img{
-
+.profile-content {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 48px;
 }
 
-.name{
-
+.image--avatar {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
 }
 
-.profile__edit{
-
+.name {
+    font-weight: bold;
+    font-size: 20px;
 }
 
-.profile__edit-button{
-
+.profile__edit-button {
+    color: #ff5555;
+    border: 2px solid #ff5555;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    background: none;
+    width: 200px;
 }
 
 .tab__label label:nth-child(1) {
     margin-left: 140px;
 }
 
-.tab__label{
-    margin-top: 24px;
+.tab__label {
     padding-bottom: 8px;
-    border-bottom: 2px solid #5F5F5F;
+    border-bottom: 2px solid #5f5f5f;
 }
 
-.tab__label-input{
+.tab__label-input {
     appearance: none;
 }
 
-.tab__label label{
+.tab__label label {
     cursor: pointer;
     margin-right: 56px;
     font-size: 16px;
     font-weight: bold;
-    color: #5F5F5F;
+    color: #5f5f5f;
 }
 
-.tab__content{
+.tab__content {
     display: none;
-    max-width: 1200px;
     margin: 32px auto;
     padding: 0 24px;
     grid-template-columns: repeat(4, 1fr);
 }
 
-#tab1:checked ~ .tab__label label[for="tab1"]{
-    color: #FF0000;
+#tab1:checked ~ .tab__label label[for="tab1"] {
+    color: #ff0000;
 }
 
-#tab1:checked ~  #content1{
+#tab1:checked ~ #content1 {
     display: grid;
 }
 
-#tab2:checked ~ .tab__label label[for="tab2"]{
-    color: #FF0000;
+#tab2:checked ~ .tab__label label[for="tab2"] {
+    color: #ff0000;
 }
-#tab2:checked ~ #content2{
+#tab2:checked ~ #content2 {
     display: grid;
 }

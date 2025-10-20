@@ -64,6 +64,6 @@ class PurchaseController extends Controller
             'building' => $request->building,
         ]);
         $itemId = $request->input('item_id');
-        return redirect()->route('purchase', ['item' => $itemId]);
+        return redirect()->route('purchase', ['item' => $itemId])->with('flash_message', '配送先を変更しました')->with('flash_type', 'success');;
     }
 }

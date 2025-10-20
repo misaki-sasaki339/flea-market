@@ -24,7 +24,7 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'temp_avatar'=>'required|string',
+            'temp_avatar'=>'nullable|string',
             'avatar'=>'image|mimes:jpeg,png',
             'name'=>'required',
             'postcode'=>'required|regex:/^\d{3}-\d{4}$/',
@@ -35,7 +35,6 @@ class ProfileRequest extends FormRequest
     public function messages()
     {
         return [
-            'temp_avatar.required'=>'プロフィール画像をアップロードしてください',
             'avatar.mimes'=>'画像はJPEGまたはPNG形式のみアップロード可能です',
             'name.required'=>'お名前を入力してください',
             'postcode.required'=>'郵便番号を入力してください',

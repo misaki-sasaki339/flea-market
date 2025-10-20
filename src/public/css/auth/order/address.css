@@ -54,12 +54,6 @@
     border-radius: 3px;
 }
 
-.error-message{
-    color: #D32F2F;
-    font-size: 12px;
-    margin: 8px 0;
-}
-
 .form__button{
     padding: 24px 0 64px;
 }

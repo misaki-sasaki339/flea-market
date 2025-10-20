@@ -52,6 +52,6 @@ class ProfileController extends Controller
 
         auth()->user()->update($request->only(['avatar','name', 'postcode', 'address', 'building']));
         session()->forget('temp_avatar');
-        return redirect()->route('mypage')->with('success', 'プロフィールを更新しました');
+        return redirect()->route('mypage')->with('flash_message', '情報を更新しました')->with('flash_type', 'success');
     }
 }

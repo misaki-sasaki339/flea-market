@@ -5,12 +5,22 @@
 @endphp
 
 <div class="image-card">
-    @php use Illuminate\Support\Str; @endphp
+    @php
+        if (empty($path)) {
+            $src = asset("dummy/{$type}/default.png");
+        } elseif (Str::startsWith($path, 'dummy/')) {
+            $src = asset($path);
+        } else {
+            $src = asset('storage/' . $path);
+        }
+    @endphp
+
     <img
         src="{{ $path
             ? (Str::startsWith($path, 'dummy/')
                 ? asset($path)
                 : asset('storage/' . $path))
             : asset('dummy/' . $type . '/default.png') }}"
-        alt="{{ $type }}画像">
+        alt="{{ $type }}画像"
+        class="image image--{{ $type }}">
 </div>

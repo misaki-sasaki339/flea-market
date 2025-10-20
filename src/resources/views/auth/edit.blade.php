@@ -16,7 +16,11 @@
     <form action="{{ route('mypage.tempUpload') }}" class="form" enctype="multipart/form-data" method="post">
         @csrf
         <fieldset class="form-group__avatar">
+        @if (session('temp_avatar'))
+            <img src="{{ asset('storage/tmp/' . session('temp_avatar')) }}" alt="一時アップロード画像" class="image image--avatar">
+        @else
             <x-image :path="$user->avatar" type="avatar" />
+        @endif
             <label for="avatar" class="form__button-upload">画像を選択する</label>
             <input type="file" class="form__input-img" id="avatar" name="avatar" accept="image/png, image/jpeg" onchange="this.form.submit()"/>
             @error('avatar')
@@ -24,11 +28,7 @@
             @enderror
         </fieldset>
     </form>
-
-    <div class="preview">
-        <img src="{{ asset('storage/tmp/' . session('temp_avatar')) }}">
-    </div>
-
+    
     <form action="{{ route('mypage.update') }}" class="form" method="post">
         @csrf
         @method('PATCH')

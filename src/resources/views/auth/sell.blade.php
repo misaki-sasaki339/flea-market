@@ -22,6 +22,9 @@
             </div>
             <div class="form-group__content">
                 <div class="form-group__input-img">
+                    @if (session('temp_img'))
+                    <img src="{{ asset('storage/tmp/' . session('temp_img')) }}" alt="一時アップロード画像" class="image image--item">
+                    @endif
                     <label for="img" class="form__button-upload">画像を選択する</label>
                     <input class="form__input-file" type="file" id="img" name="img" accept="image/png, image/jpeg" onchange="this.form.submit()">
                     @error('img')
@@ -31,11 +34,6 @@
             </div>
         </div>
     </form>
-    @if(session('temp_img'))
-    <div class="preview">
-        <img src="{{ asset('storage/tmp/' . session('temp_img')) }}" >
-    </div>
-    @endif
 
     {{--本登録--}}
     <form action="{{ route('sell.store') }}" class="form" method="post">
@@ -65,7 +63,7 @@
                 </div>
                 <div class="form-group__content">
                     <div class="form__item-select">
-                        <select class="form__item-select--option" name="condition_id" value="{{ old('condition_id') }}" >
+                        <select class="form__item-select--option" name="condition_id" value="{{ old('condition_id') }}">
                             <option value="" disabled selected>選択してください</option>
                             @foreach($conditions as $condition)
                             <option value="{{ $condition->id }}" {{ old('condition_id') == $condition->id ? 'selected' : '' }}>{{ $condition->status}}</option>
@@ -121,7 +119,7 @@
                     </div>
                     <div class="form-group__content">
                         <div class="form-group__input-text">
-                            <input class="form__input" type="text" name="price" value="{{ old('price') }}"/>
+                            <input class="form__input" type="text" name="price" value="{{ old('price') }}" />
                             @error('price')
                             <p class="error-message">{{ $message }}</p>
                             @enderror

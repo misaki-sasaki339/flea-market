@@ -2,37 +2,40 @@ body {
     margin: 0;
 }
 
-.main{
-    max-width: 1200px;
+main {
+    max-width: 1540px;
+    min-width: 1400px;
     margin: 0 auto;
 }
 
-.header{
+.header {
     background-color: #000000;
-    height: 56px;
+    height: 64px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.header__logo{
-    margin-left: 24px;
+.header__logo {
+    margin-left: 40px;
 }
 
-.header__link{
-
-}
-
-.header__logo-img{
-    width: 240px;
+.header__logo-img {
+    width: 300px;
 }
 
 fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  min-inline-size: auto;
-  box-sizing: border-box;
-  display: block;
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-inline-size: auto;
+    box-sizing: border-box;
+    display: block;
+}
+
+.error-message{
+    color: #D32F2F;
+    font-size: 12px;
+    margin: 8px 0;
 }

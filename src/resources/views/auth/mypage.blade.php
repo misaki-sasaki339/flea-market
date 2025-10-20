@@ -7,16 +7,18 @@
 
 @section('content')
 <section class="content">
-    <section class="profile-content">
-            <img class="img__avatar" src="{{ asset('storage/' . $user->avatar) }}" alt="プロフィール画像">
+    <div class="profile">
+        <div class="profile-content">
+            <x-image :path="$user->avatar" type="avatar" />
             <span class="name">{{ $user->name }}</span>
+        </div>
         <div class="profile__edit">
             <form action="{{ route('mypage.edit') }}" method="get">
                 @csrf
                 <button class="profile__edit-button" type="submit">プロフィールを編集</button>
             </form>
         </div>
-    </section>
+    </div>
 
     <div class="tab-wrapper">
         <input class="tab__label-input" type="radio" name="tab_btn" id="tab1" {{ $page === 'sell' ? 'checked' : '' }} />
@@ -26,17 +28,17 @@
             <label for="tab2" onclick="location.href='{{ route('mypage', ['page' => 'buy']) }}'">購入した商品</label>
         </div>
 
-        <section class="tab__content" id="content1">
+        <div class="tab__content" id="content1">
             @foreach($items as $item)
             <x-item-card :item="$item" />
             @endforeach
-        </section>
+        </div>
 
-        <section class="tab__content" id="content2">
+        <div class="tab__content" id="content2">
             @foreach($items as $item)
             <x-item-card :item="$item" />
             @endforeach
-        </section>
+        </div>
     </div>
 </section>
 @endsection

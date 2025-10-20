@@ -52,6 +52,6 @@ class SellController extends Controller
 
         $item->categories()->sync($request->input('category_ids', []));
         session()->forget('temp_img');
-        return redirect()->route('mypage')->with('success', '商品を出品しました');;
+        return redirect()->route('mypage')->with('flash_message', '商品を出品しました')->with('flash_type', 'success');
     }
 }

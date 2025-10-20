@@ -11,7 +11,7 @@
         @csrf
         <div class="form__left">
             <section class="form-group__item">
-                <img class="item__img" src="{{ asset('storage/' . $item->img) }}" alt="{{ $item->name }}">
+                <x-item-card :item="$item" />
                 <div class="item-info">
                     <p class="form__label--item-name">{{ $item->name }}</p>
                     <p class="item__price-label">¥
