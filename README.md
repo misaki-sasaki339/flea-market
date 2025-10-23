@@ -52,6 +52,7 @@ php artisan db:seed
 ＃画像ファイルのリンク作成
 php artisan storage:link
 ```
+
 ---
 
 ## 環境変数の設定（.env）
@@ -98,9 +99,9 @@ STRIPE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxx
 STRIPE_SECRET=sk_test_xxxxxxxxxxxxxxxxxxxx
 ```
 
-3. テストモードで動作確認できます。
-テストカード番号例：4242 4242 4242 4242
-有効期限：未来の日付(例：03/31)
+3. テストモードで動作確認できます。<br />
+テストカード番号例：4242 4242 4242 4242<br />
+有効期限：未来の日付(例：03/31)<br />
 CVC：任意の3桁
 
 ---
@@ -114,6 +115,3 @@ MailHogはdocker-compose.ymlに含まれています。
 以下のURLにアクセスしてメールを確認してください。
 
 http://localhost:8025
-
-```
----
