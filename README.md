@@ -26,7 +26,7 @@ Laravel×MySQL×Dockerで構築したフリマアプリです。
 
 ## ER図
 
-![ER図](src/docs/ER.png)
+![ER図](src/docs/ER.drawio.svg)
 
 ---
 
