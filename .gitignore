@@ -30,4 +30,4 @@ Homestead.json
 .phpactor.json
 auth.json
 
-docker/mysql/data/
+docker/mysql/data//src/.env.testing
