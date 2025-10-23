@@ -26,7 +26,7 @@ Laravel×MySQL×Dockerで構築したフリマアプリです。
 
 ## ER図
 
-![ER図](flea-market/src/docs/ER.png)
+![ER図](/Users/sasakimisaki/coachtech/flea-market/flea-market/src/docs/ER.png)
 
 ---
 
