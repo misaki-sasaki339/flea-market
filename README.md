@@ -49,40 +49,13 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 
+＃画像ファイルのリンク作成
+php artisan storage:link
 ```
-
 ---
 
-## Stripeの設定
-本アプリではStripeを使用して決済を行います。
-事前にStripe公式サイトにて無料アカウントを作成し、以下の手順で環境変数を設定してください。
+## 環境変数の設定（.env）
 
-1. Stripeダッシュボードにログインし、「開発者」→「APIキー」から公開可能キー、シークレットキーを取得します。
-
-2. .envファイルに以下を追記します。
-```
-STRIPE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxx
-STRIPE_SECRET=sk_test_xxxxxxxxxxxxxxxxxxxx
-```
-
-3. テストモードで動作確認できます。
-テストカード番号例：4242 4242 4242 4242
-有効期限：未来の日付(例：03/31)
-CVC1：任意の3桁
-
----
-
-## MailHogの設定
-
-本アプリではメール認証(Fortify)を使用しています。
-ローカル環境ではMailHogを使用してメール送信を確認できます。
-
-MailHogはdocker-compose.ymlに含まれています。
-以下のURLにアクセスしてメールを確認してください。
-
-http://localhost:8025
-
-```
 #.env設定例
 APP_NAME=Laravel
 APP_ENV=local
@@ -106,8 +79,42 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=example@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 
-STRIPE_KEY=pk_test_***************
+STRIPE_KEY=pk_test_*************** //下記Stripeの設定を参照ください
 STRIPE_SECRET=sk_test_***************
 ```
+
+---
+
+## Stripeの設定
+本アプリではStripeを使用して決済を行います。
+事前にStripe公式サイトにて無料アカウントを作成し、以下の手順で環境変数を設定してください。
+
+1. Stripeダッシュボードにログインし、「開発者」→「APIキー」から公開可能キー、シークレットキーを取得します。
+
+2. .envファイルに以下を追記します。
+```
+STRIPE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxx
+STRIPE_SECRET=sk_test_xxxxxxxxxxxxxxxxxxxx
+```
+
+3. テストモードで動作確認できます。
+テストカード番号例：4242 4242 4242 4242
+有効期限：未来の日付(例：03/31)
+CVC：任意の3桁
+
+---
+
+## MailHogの設定
+
+本アプリではメール認証(Fortify)を使用しています。
+ローカル環境ではMailHogを使用してメール送信を確認できます。
+
+MailHogはdocker-compose.ymlに含まれています。
+以下のURLにアクセスしてメールを確認してください。
+
+http://localhost:8025
+
+```
+
 
 ---
