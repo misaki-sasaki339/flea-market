@@ -14,16 +14,19 @@ class Order extends Model
         'item_id',
     ];
 
-    //リレーション
-    public function user(){
+    // リレーション
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function item(){
+    public function item()
+    {
         return $this->belongsTo('App\Models\Item');
     }
 
-    public function shipment(){
+    public function shipment()
+    {
         return $this->hasOne(Shipment::class);
     }
 }

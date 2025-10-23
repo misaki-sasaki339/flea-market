@@ -24,22 +24,22 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'temp_avatar'=>'nullable|string',
-            'avatar'=>'image|mimes:jpeg,png',
-            'name'=>'required',
-            'postcode'=>'required|regex:/^\d{3}-\d{4}$/',
-            'address'=>'required',
+            'temp_avatar' => 'nullable|string',
+            'avatar' => 'image|mimes:jpeg,png',
+            'name' => 'required',
+            'postcode' => 'required|regex:/^\d{3}-\d{4}$/',
+            'address' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'avatar.mimes'=>'画像はJPEGまたはPNG形式のみアップロード可能です',
-            'name.required'=>'お名前を入力してください',
-            'postcode.required'=>'郵便番号を入力してください',
-            'postcode.regex'=>'郵便番号はXXX-XXXXの形式で入力してください',
-            'address.required'=>'住所を入力してください'
+            'avatar.mimes' => '画像はJPEGまたはPNG形式のみアップロード可能です',
+            'name.required' => 'お名前を入力してください',
+            'postcode.required' => '郵便番号を入力してください',
+            'postcode.regex' => '郵便番号はXXX-XXXXの形式で入力してください',
+            'address.required' => '住所を入力してください',
         ];
     }
 }

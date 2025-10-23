@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
-use Stripe\Stripe;
+use Illuminate\Http\Request;
 use Stripe\Checkout\Session as StripeSession;
+use Stripe\Stripe;
 
 class StripeController extends Controller
 {
@@ -29,6 +29,7 @@ class StripeController extends Controller
 
         return redirect($stripeSession->url);
     }
+
     public function success()
     {
         return redirect()->route('mypage')->with('flash_message', '注文が完了しました')->with('flash_type', 'success');
@@ -36,6 +37,6 @@ class StripeController extends Controller
 
     public function cancel()
     {
-        return redirect()->route('mypage')->with('flash_message', '決済キャンセルされました')->with('flash_type', 'error');;
+        return redirect()->route('mypage')->with('flash_message', '決済キャンセルされました')->with('flash_type', 'error');
     }
 }

@@ -22,45 +22,56 @@ class Item extends Model
         'stripe_price_id',
     ];
 
-    //リレーション
-    public function categories(){
+    // リレーション
+    public function categories()
+    {
         return $this->belongsToMany(Category::class, 'category_items');
     }
 
-    public function condition(){
+    public function condition()
+    {
         return $this->belongsTo('App\Models\Condition');
     }
 
-    public function favorites(){
+    public function favorites()
+    {
         return $this->belongsToMany(User::class, 'favorites')->withTimestamps();
     }
 
-    //ログインユーザがいいねしているかの判定
-    public function isLikedByAuthUser():bool{
+    // ログインユーザがいいねしているかの判定
+    public function isLikedByAuthUser(): bool
+    {
         $id = Auth::id();
+
         return $this->favorites()->where('user_id', $id)->exists();
     }
-    //いいね数の取得
-    public function favoritesCount(){
+
+    // いいね数の取得
+    public function favoritesCount()
+    {
         return $this->favorites()->count();
     }
 
-    public function order(){
+    public function order()
+    {
         return $this->belongsTo('App\Models\Order');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    //ローカルスコープ
-    public function scopeKeyword($query, $keyword){
-        if(!empty($keyword)){
-            $query->where('name', 'like', '%' . $keyword . '%');
+    // ローカルスコープ
+    public function scopeKeyword($query, $keyword)
+    {
+        if (! empty($keyword)) {
+            $query->where('name', 'like', '%'.$keyword.'%');
         }
     }
 }

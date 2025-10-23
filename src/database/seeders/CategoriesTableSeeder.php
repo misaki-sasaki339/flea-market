@@ -16,7 +16,7 @@ class CategoriesTableSeeder extends Seeder
     {
         $contents = ['ファッション', '家電', 'インテリア', 'レディース', 'メンズ', 'コスメ', '本', 'ゲーム', 'スポーツ', 'キッチン', 'ハンドメイド', 'アクセサリー', 'おもちゃ', 'ベビー・キッズ'];
 
-        foreach($contents as $content){
+        foreach ($contents as $content) {
             DB::table('categories')->insert([
                 'content' => $content,
             ]);

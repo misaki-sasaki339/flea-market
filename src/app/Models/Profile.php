@@ -16,8 +16,9 @@ class Profile extends Model
         'building',
     ];
 
-    //リレーション
-    public function User(){
+    // リレーション
+    public function User()
+    {
         return $this->belongsTo('App\Models\User');
     }
 }

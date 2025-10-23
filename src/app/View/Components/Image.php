@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class Image extends Component
 {
     public $path;
+
     public $type;
 
     public function __construct($path = null, $type = 'avatar')

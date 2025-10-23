@@ -16,7 +16,7 @@ class ConditionsTableSeeder extends Seeder
     {
         $statuses = ['良好', '目立った傷や汚れなし', 'やや傷や汚れあり', '状態が悪い'];
 
-        foreach($statuses as $status){
+        foreach ($statuses as $status) {
             DB::table('conditions')->insert([
                 'status' => $status,
             ]);

@@ -10,11 +10,12 @@ class Condition extends Model
     use HasFactory;
 
     protected $fillable = [
-        'status'
+        'status',
     ];
-    
-    //リレーション
-    public function items(){
+
+    // リレーション
+    public function items()
+    {
         return $this->hasOne('App\Models\Item');
     }
 }

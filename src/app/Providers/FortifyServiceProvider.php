@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Contracts\VerifyEmailViewResponse;
+use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Responses\SimpleViewResponse;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -29,12 +29,12 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::createUsersUsing(CreateNewUser::class);
 
-        //ユーザー登録画面で表示するビューの指定
+        // ユーザー登録画面で表示するビューの指定
         Fortify::registerView(function () {
             return view('auth.register');
         });
 
-        //ログイン画面で表示するビューの指定
+        // ログイン画面で表示するビューの指定
         Fortify::loginView(function () {
             return view('auth.login');
         });
@@ -50,7 +50,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(VerifyEmailViewResponse::class, function () {
-        return new SimpleViewResponse('auth.verify-email');
+            return new SimpleViewResponse('auth.verify-email');
         });
     }
 }

@@ -8,19 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'user_id',
         'item_id',
         'review',
     ];
 
-    //リレーション
-    public function user(){
+    // リレーション
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function item(){
+    public function item()
+    {
         return $this->belongsTo('App\Models\Item');
     }
 }

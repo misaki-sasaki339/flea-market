@@ -2,24 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\PurchaseRequest;
 use App\Models\Item;
 use App\Models\Order;
-use App\Http\Requests\AddressRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\PurchaseRequest;
 use App\Models\Shipment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PurchaseController extends Controller
 {
-    //商品購入画面の表示
+    // 商品購入画面の表示
     public function create(Item $item)
     {
         $user = Auth::user();
+
         return view('auth.order.purchase', compact('item', 'user'));
     }
 
-        //住所変更画面の表示
+    // 住所変更画面の表示
     public function editAddress(Request $request)
     {
         $user = Auth::user();
@@ -27,10 +28,11 @@ class PurchaseController extends Controller
         if ($request->has('item_id')) {
             session(['item_id' => $request->item_id]);
         }
+
         return view('auth.order.address', compact('user'));
     }
 
-        //変更先住所の登録
+    // 変更先住所の登録
     public function updateAddress(AddressRequest $request)
     {
         $request->session()->put([
@@ -39,10 +41,11 @@ class PurchaseController extends Controller
             'building' => $request->building,
         ]);
         $itemId = $request->input('item_id');
-        return redirect()->route('purchase', ['item' => $itemId])->with('flash_message', '配送先を変更しました')->with('flash_type', 'success');;
+
+        return redirect()->route('purchase', ['item' => $itemId])->with('flash_message', '配送先を変更しました')->with('flash_type', 'success');
     }
 
-    //商品購入機能
+    // 商品購入機能
     public function store(PurchaseRequest $request, Item $item)
     {
 
@@ -71,8 +74,8 @@ class PurchaseController extends Controller
 
             $request->session()->put('payment_method', $request->payment);
             $request->session()->save();
+
             return redirect()->route('payment.checkout', ['order' => $order->id]);
         }
     }
-
 }

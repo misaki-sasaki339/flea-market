@@ -2,12 +2,11 @@
 
 namespace App\Notifications;
 
-
+use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmailNotification extends BaseVerifyEmail
 {
@@ -17,7 +16,6 @@ class VerifyEmailNotification extends BaseVerifyEmail
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-
     protected function verificationUrl($notifiable)
     {
         $temporarySignedUrl = URL::temporarySignedRoute(
@@ -35,9 +33,10 @@ class VerifyEmailNotification extends BaseVerifyEmail
     public function toMail($notifiable)
     {
         $verifyUrl = $this->verificationUrl($notifiable);
+
         return (new MailMessage)
             ->subject('【仮登録完了】メールアドレスの確認をお願いします')
-            ->greeting($notifiable->name . ' 様')
+            ->greeting($notifiable->name.' 様')
             ->line('このたびはご登録ありがとうございます。')
             ->line('以下のボタンをクリックして、本登録を完了してください。')
             ->action('メールアドレスを確認する', $verifyUrl)

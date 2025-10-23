@@ -7,7 +7,7 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
-    //コメント送信機能
+    // コメント送信機能
     public function store(CommentRequest $request)
     {
         Comment::create(
@@ -17,6 +17,7 @@ class CommentController extends Controller
                 'review' => $request->review,
             ]
         );
+
         return redirect()->back()->with('flash_message', 'コメントを投稿しました')->with('flash_type', 'success');
     }
 }

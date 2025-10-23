@@ -10,11 +10,12 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'content'
+        'content',
     ];
 
-    //リレーション
-    public function items(){
+    // リレーション
+    public function items()
+    {
         return $this->belongsToMany('Category::class', 'category_items');
     }
 }

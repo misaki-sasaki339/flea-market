@@ -57,7 +57,7 @@ class ExhibitionRequest extends FormRequest
         $validator->after(function ($validator) {
             $tempImg = session('temp_img');
 
-            if (empty($tempImg) || !Storage::exists('public/tmp/' . $tempImg)) {
+            if (empty($tempImg) || ! Storage::exists('public/tmp/'.$tempImg)) {
                 $validator->errors()->add('temp_img', '商品画像をアップロードしてください');
             }
         });

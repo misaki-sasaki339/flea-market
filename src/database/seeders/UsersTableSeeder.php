@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -20,73 +20,73 @@ class UsersTableSeeder extends Seeder
             'email' => 'Luffy@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/ルフィー.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
-            'building'=>'皇居',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
+            'building' => '皇居',
         ]);
         User::create([
             'name' => 'ロロノア・ゾロ',
             'email' => 'Zoro@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/ゾロ.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'ナミ',
             'email' => 'Nami@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/ナミ.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'そげキング',
             'email' => 'Usopp@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/そげキング.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'サンジ',
             'email' => 'Sanji@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/サンジ.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'トニートニー・チョッパー',
             'email' => 'Chopper@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/チョッパー.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'ニコ・ロビン',
             'email' => 'Robin@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/ニコロビン.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'フランキー',
             'email' => 'Franky@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/フランキー.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
             'name' => 'ブルック',
             'email' => 'Brook@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/ブルック.png',
-            'postcode'=>'100-8111',
-            'address'=>'東京都千代田区千代田１−１',
+            'postcode' => '100-8111',
+            'address' => '東京都千代田区千代田１−１',
         ]);
     }
 }
