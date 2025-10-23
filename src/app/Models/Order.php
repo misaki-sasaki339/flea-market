@@ -22,4 +22,8 @@ class Order extends Model
     public function item(){
         return $this->belongsTo('App\Models\Item');
     }
+
+    public function shipment(){
+        return $this->hasOne(Shipment::class);
+    }
 }

@@ -32,11 +32,11 @@ class StripeController extends Controller
     }
     public function success()
     {
-        return '決済成功！Stripeのチェックアウトから戻ってきました。';
+        return redirect()->route('mypage')->with('flash_message', '注文が完了しました')->with('flash_type', 'success');
     }
 
     public function cancel()
     {
-        return '決済キャンセルされました。';
+        return redirect()->route('mypage')->with('flash_message', '決済キャンセルされました')->with('flash_type', 'error');;
     }
 }

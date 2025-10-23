@@ -1,18 +1,18 @@
 @props(['path' => null, 'type' => 'avatar'])
 
 @php
-    if (empty($type)) $type = 'avatar';
+if (empty($type)) $type = 'avatar';
 @endphp
 
 <div class="image-card">
     @php
-        if (empty($path)) {
-            $src = asset("dummy/{$type}/default.png");
-        } elseif (Str::startsWith($path, 'dummy/')) {
-            $src = asset($path);
-        } else {
-            $src = asset('storage/' . $path);
-        }
+    if (empty($path)) {
+    $src = asset("dummy/{$type}/default.png");
+    } elseif (Str::startsWith($path, 'dummy/')) {
+    $src = asset($path);
+    } else {
+    $src = asset('storage/' . $path);
+    }
     @endphp
 
     <img

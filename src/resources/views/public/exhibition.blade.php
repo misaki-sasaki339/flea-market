@@ -8,7 +8,7 @@
 @section('content')
 <article class="content">
     <figure class="item__img">
-        <x-image :path="$item->img" type="items" />
+        <x-item-card :item="$item" type="items" />
     </figure>
 
     <div class="item__details">
@@ -89,7 +89,10 @@
             <form class="form" action="{{ route('item.comment', ['id'=>$item->id]) }}" method="post">
                 @csrf
                 <label for="review" class="item__comment-label">商品へのコメント</label>
-                <textarea class="item__comment-content" name="review" id="review">{{ old('review') }}</textarea>
+                <textarea class="item__comment-content @error('review') is-invalid @enderror" name="review" id="review">{{ old('review') }}</textarea>
+                @error('review')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
                 <input type="hidden" name="item_id" value="{{ $item->id }}">
                 <div class="form__button">
                     <button class="form__button-submit" type="submit">コメントを送信する</button>

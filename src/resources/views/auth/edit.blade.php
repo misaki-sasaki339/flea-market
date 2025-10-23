@@ -28,14 +28,14 @@
             @enderror
         </fieldset>
     </form>
-    
+
     <form action="{{ route('mypage.update') }}" class="form" method="post">
         @csrf
         @method('PATCH')
         <input type="hidden" name="temp_avatar" value="{{ session('temp_avatar') }}">
         <fieldset class="form-group">
             <label for="name" class="form__label--item">ユーザー名</label>
-            <input class="form__input @error('email') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name', $user->name) }}" />
+            <input class="form__input @error('name') is-invalid @enderror" id="name" type="text" name="name" value="{{ old('name', $user->name) }}" />
             @error('name')
             <p class="error-message">{{ $message }}</p>
             @enderror
@@ -51,7 +51,7 @@
 
         <fieldset class="form-group">
             <label for="address" class="form__label--item">住所</label>
-            <input class="form__input @error('email') is-invalid @enderror" id="address" type="text" name="address" value="{{ old('address', $user->address) }}" />
+            <input class="form__input @error('address') is-invalid @enderror" id="address" type="text" name="address" value="{{ old('address', $user->address) }}" />
             @error('address')
             <p class="error-message">{{ $message }}</p>
             @enderror

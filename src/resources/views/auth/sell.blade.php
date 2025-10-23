@@ -27,11 +27,11 @@
                     @endif
                     <label for="img" class="form__button-upload">画像を選択する</label>
                     <input class="form__input-file" type="file" id="img" name="img" accept="image/png, image/jpeg" onchange="this.form.submit()">
-                    @error('img')
-                    <p class="error-message">{{ $message }}</p>
-                    @enderror
                 </div>
             </div>
+            @error('temp_img')
+            <p class="error-message">{{ $message }}</p>
+            @enderror
         </div>
     </form>
 
@@ -48,14 +48,14 @@
                 <div class="form-group__content-category">
                     @foreach($categories as $category)
                     <label class="form__item-checkbox">
-                        <input class="form__input-checkbox" type="checkbox" name="category_ids[]" value="{{ $category->id }}" {{ old('category_ids',[]) ? 'checked' : ''}} />
+                        <input class="form__input-checkbox" type="checkbox" name="category_ids[]" value="{{ $category->id }}" {{ in_array($category->id, old('category_ids',[])) ? 'checked' : ''}} />
                         <span class="checkbox-decoration">{{ $category->content }}</span>
                     </label>
                     @endforeach
-                    @error('category_ids')
-                    <p class="error-message">{{ $message }}</p>
-                    @enderror
                 </div>
+                @error('category_ids')
+                <p class="error-message">{{ $message }}</p>
+                @enderror
             </div>
             <div class="form-group">
                 <div class="form-group__title">
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group__desctiption">
+            <div class="form-group__description">
                 <p class="form__label">商品名と説明</p>
                 <div class="form-group">
                     <div class="form-group__title">
@@ -83,7 +83,7 @@
                     </div>
                     <div class="form-group__content">
                         <div class="form-group__input-text">
-                            <input class="form__input" type="text" name="name" value="{{ old('name') }}" />
+                            <input class="form__input @error('name') is-invalid @enderror" type="text" name="name" value="{{ old('name') }}" />
                             @error('name')
                             <p class="error-message">{{ $message }}</p>
                             @enderror
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-group__content">
                         <div class="form-group__input-textarea">
-                            <textarea name="description" class="form__input-textarea">{{ old('description') }}</textarea>
+                            <textarea name="description" class="form__input-textarea @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
                             @error('description')
                             <p class="error-message">{{ $message }}</p>
                             @enderror
@@ -119,11 +119,10 @@
                     </div>
                     <div class="form-group__content">
                         <div class="form-group__input-text">
-                            <input class="form__input" type="text" name="price" value="{{ old('price') }}" />
+                            <input class="form__input @error('price') is-invalid @enderror" type="text" name="price" value="{{ old('price') }}" />
                             @error('price')
                             <p class="error-message">{{ $message }}</p>
                             @enderror
-                            <!--￥マークの表示を疑似要素使うかJS使うか検討-->
                         </div>
                     </div>
                 </div>

@@ -19,9 +19,6 @@ class CommentController extends Controller
                 'review' => $request->review,
             ]
         );
-        return redirect()->back();
+        return redirect()->back()->with('flash_message', 'コメントを投稿しました')->with('flash_type', 'success');
     }
-
-    //コメント削除機能
-    public function destroy() {}
 }

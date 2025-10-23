@@ -39,3 +39,9 @@ fieldset {
     font-size: 12px;
     margin: 8px 0;
 }
+
+.form__input.is-invalid{
+    border: 2px solid #e63946;
+    background-color: #ffe5e5;
+    border-radius: 3px;
+}

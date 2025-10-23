@@ -211,3 +211,14 @@
 .form__button-submit:hover {
     transform: translateY(-5px);
 }
+
+
+.is-invalid {
+    border: 2px solid #ff5555 !important;
+    background-color: #fff5f5;
+}
+
+.form__input-textarea.is-invalid {
+    border: 2px solid #ff5555 !important;
+    background-color: #fff5f5;
+}
