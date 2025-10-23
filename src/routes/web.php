@@ -2,13 +2,11 @@
 
 use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
-
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
@@ -77,7 +75,7 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 //認証後ページ
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     //マイページ関連
     Route::get('/mypage', [ProfileController::class, 'index'])->name('mypage');
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.edit');
@@ -88,9 +86,9 @@ Route::middleware('auth')->group(function (){
     //購入関連
     Route::get('/purchase/address', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
     Route::patch('/purchase/address', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');
-    Route::get('/purchase/{item}',[PurchaseController::class, 'create'])->name('purchase');
-    Route::post('/purchase/{item}',[PurchaseController::class, 'store'])->name('purchase.store');
-    Route::get('/checkout/{order}',[StripeController::class, 'checkout'])->name('payment.checkout');
+    Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase');
+    Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/checkout/{order}', [StripeController::class, 'checkout'])->name('payment.checkout');
     Route::get('/success', [StripeController::class, 'success'])->name('payment.success');
     Route::get('/cancel', [StripeController::class, 'cancel'])->name('payment.cancel');
 
