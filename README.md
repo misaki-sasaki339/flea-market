@@ -57,6 +57,7 @@ php artisan storage:link
 ## 環境変数の設定（.env）
 
 #.env設定例
+```
 APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:xxxxx
@@ -115,6 +116,4 @@ MailHogはdocker-compose.ymlに含まれています。
 http://localhost:8025
 
 ```
-
-
 ---
