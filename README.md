@@ -34,15 +34,17 @@ Laravel×MySQL×Dockerで構築したフリマアプリです。
 
 ```bash
 #クローン
-git clone　git@github.com:misaki-sasaki339/flea-market.git
+git clone git@github.com:misaki-sasaki339/flea-market.git
 
 #Dockerビルド
+cd flea-market
 docker compose up -d --build
 
 #Laravel環境構築
 docker compose exec php bash
 composer install
 cp .env.example .env
+# ⚠️ 重要：docker-compose.ymlファイルをもとに.envファイルのDB設定を修正
 php artisan key:generate
 php artisan migrate
 php artisan db:seed
@@ -55,7 +57,7 @@ php artisan db:seed
 本アプリではStripeを使用して決済を行います。
 事前にStripe公式サイトにて無料アカウントを作成し、以下の手順で環境変数を設定してください。
 
-1. Stripeダッシュボードにログインし、「開発者」→「APIキー」から以下を取得します。
+1. Stripeダッシュボードにログインし、「開発者」→「APIキー」から公開可能キー、シークレットキーを取得します。
 
 2. .envファイルに以下を追記します。
 ```

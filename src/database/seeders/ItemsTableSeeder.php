@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Stripe\Stripe;
+use Stripe\Price;
 
 class ItemsTableSeeder extends Seeder
 {
@@ -14,6 +16,8 @@ class ItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        Stripe::setApiKey(env('STRIPE_SECRET'));
+
         $params = [
             [
                 'img' => 'dummy/items/Armani+Mens+Clock.jpg',
@@ -23,7 +27,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'Rolax',
                 'description'=>'スタイリッシュなデザインのメンズ腕時計',
                 'price'=>'15000',
-                'stripe_price_id'=>'price_1SFdj7IF9VwpA1eugWUGBACN',
             ],
             [
                 'img' => 'dummy/items/HDD+Hard+Disk.jpg',
@@ -33,7 +36,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'西芝',
                 'description'=>'高速で信頼性の高いハードディスク',
                 'price'=>'5000',
-                'stripe_price_id'=>'price_1SFdjcIF9VwpA1euUdtR8N2z',
             ],
             [
                 'img' => 'dummy/items/onion.jpg',
@@ -43,7 +45,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'なし',
                 'description'=>'新鮮な玉ねぎ3束のセット',
                 'price'=>'300',
-                'stripe_price_id'=>'price_1SFdk8IF9VwpA1eu1L4vQFFH',
             ],
             [
                 'img' => 'dummy/items/Leather+Shoes+Product+Photo.jpg',
@@ -53,7 +54,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'クラシックなデザインの革靴',
                 'price'=>'4000',
-                'stripe_price_id'=>'price_1SFdkTIF9VwpA1euczhmXCTN',
             ],
             [
                 'img' => 'dummy/items/Living+Room+Laptop.jpg',
@@ -63,7 +63,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'高性能なノートパソコン',
                 'price'=>'45000',
-                'stripe_price_id'=>'price_1SFdknIF9VwpA1eukacGEMoB',
             ],
             [
                 'img' => 'dummy/items/Music+Mic+4632231.jpg',
@@ -73,7 +72,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'高音質のレコーディング用マイク',
                 'price'=>'8000',
-                'stripe_price_id'=>'price_1SFdl4IF9VwpA1euBoXenfW9',
             ],
             [
                 'img' => 'dummy/items/Purse+fashion+pocket.jpg',
@@ -83,7 +81,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'おしゃれなショルダーバッグ',
                 'price'=>'3500',
-                'stripe_price_id'=>'price_1SFdmJIF9VwpA1euXfQQLLpT',
             ],
             [
                 'img' => 'dummy/items/Tumbler+souvenir.jpg',
@@ -93,7 +90,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'なし',
                 'description'=>'使いやすいタンブラー',
                 'price'=>'500',
-                'stripe_price_id'=>'price_1SFdmlIF9VwpA1eu2XIOfx3S',
             ],
             [
                 'img' => 'dummy/items/Waitress+with+Coffee+Grinder.jpg',
@@ -103,7 +99,6 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'Starbacks',
                 'description'=>'手動のコーヒーミル',
                 'price'=>'4000',
-                'stripe_price_id'=>'price_1SFdn7IF9VwpA1eujdXEjhqy',
             ],
             [
                 'img' => 'dummy/items/外出メイクアップセット.jpg',
@@ -113,9 +108,20 @@ class ItemsTableSeeder extends Seeder
                 'brand'=>'',
                 'description'=>'便利なメイクアップセット',
                 'price'=>'2500',
-                'stripe_price_id'=>'price_1SFdnSIF9VwpA1eumysZc7Ld',
             ],
         ];
+
+        foreach ($params as &$item) {
+            $price = Price::create([
+                'unit_amount' => $item['price'],
+                'currency' => 'jpy',
+                'product_data' => [
+                    'name' => $item['name'],
+                ],
+            ]);
+            $item['stripe_price_id'] = $price->id;
+        }
+
         DB::table('items')->insert($params);
     }
 }
