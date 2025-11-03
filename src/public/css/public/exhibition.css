@@ -64,16 +64,15 @@ h2 {
     gap: 48px;
 }
 
-.item__review-favorite,
+.item__review-favorite form,
 .item__review-comment {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
 }
 
-a.no-app-style {
+.no-app-style {
     display: flex;
-    flex-direction: column;
     align-items: center;
     height: auto;
     text-decoration: none;
@@ -108,15 +107,6 @@ img.comment-icon {
     text-align: center;
 }
 
-.form-order {
-}
-
-.form {
-}
-
-.form__button {
-}
-
 .form__button-submit {
     width: 100%;
     height: 40px;
@@ -140,12 +130,6 @@ img.comment-icon {
 h3 {
     font-size: 24px;
     font-weight: bold;
-}
-
-.item__description-content {
-}
-
-.item__information-label {
 }
 
 dd {
@@ -222,9 +206,6 @@ dd {
     width: 100%;
 }
 
-.item__comment-preview {
-}
-
 .item__comment-label {
     font-size: 20px;
     font-weight: bold;
@@ -261,3 +242,13 @@ textarea.item__comment-content {
 .item-name {
     display: none;
 }
+
+.form__button-submit--disliked,
+.form__button-submit--liked{
+    all: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+

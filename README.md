@@ -5,8 +5,7 @@ Laravel×MySQL×Dockerで構築したフリマアプリです。
 ---
 
 ## アプリ概要
-
-本アプリはユーザーが商品を出品・購入できるフリマアプリとなります。
+Webアプリ開発の学習過程で制作したフリマアプリです。<br />
 ログイン後、出品・購入・お気に入り・コメント機能が利用でき、購入時はStripeによる決済処理も行うことが可能です。
 
 ---
@@ -39,6 +38,8 @@ git clone git@github.com:misaki-sasaki339/flea-market.git
 #Dockerビルド
 cd flea-market
 docker compose up -d --build
+# ⚠️ Compose V1の場合は下記コマンドでビルドしてください
+docker-compose up -d --build
 
 #Laravel環境構築
 docker compose exec php bash
@@ -49,7 +50,7 @@ php artisan key:generate
 php artisan migrate
 php artisan db:seed
 
-＃画像ファイルのリンク作成
+# 画像ファイルのリンク作成
 php artisan storage:link
 ```
 

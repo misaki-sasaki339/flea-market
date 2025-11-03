@@ -42,9 +42,11 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'differentpass123',
         ];
 
-        $response = $this->post('/register', $data);
+        $response = $this->from('/register')->post('/register', $data);
 
-        $response->assertSessionHasErrors(['password']);
+        $response->assertRedirect('/register');
+        $response = $this->get('/register');
+        $response->assertSee('パスワードと一致しません');
     }
 
     // パスワードが短すぎるパターン
@@ -57,9 +59,11 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'pass',
         ];
 
-        $response = $this->post('/register', $data);
+        $response = $this->from('/register')->post('/register', $data);
 
-        $response->assertSessionHasErrors(['password']);
+        $response->assertRedirect('/register');
+        $response = $this->get('/register');
+        $response->assertSee('パスワードは8文字以上で入力してください');
     }
 
     // パスワード未入力のパターン
@@ -70,9 +74,11 @@ class RegisterTest extends TestCase
             'email' => 'test@example.com',
         ];
 
-        $response = $this->post('/register', $data);
+        $response = $this->from('/register')->post('/register', $data);
 
-        $response->assertSessionHasErrors(['password']);
+        $response->assertRedirect('/register');
+        $response = $this->get('/register');
+        $response->assertSee('パスワードを入力してください');
     }
 
     // メールアドレス未入力のパターン
@@ -84,9 +90,11 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'password123',
         ];
 
-        $response = $this->post('/register', $data);
+        $response = $this->from('/register')->post('/register', $data);
 
-        $response->assertSessionHasErrors(['email']);
+        $response->assertRedirect('/register');
+        $response = $this->get('/register');
+        $response->assertSee('メールアドレスを入力してください');
     }
 
     // 名前未入力のパターン
@@ -98,8 +106,10 @@ class RegisterTest extends TestCase
             'password_confirmation' => 'password123',
         ];
 
-        $response = $this->post('/register', $data);
+        $response = $this->from('/register')->post('/register', $data);
 
-        $response->assertSessionHasErrors(['name']);
+        $response->assertRedirect('/register');
+        $response = $this->get('/register');
+        $response->assertSee('お名前を入力してください');
     }
 }

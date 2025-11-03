@@ -24,15 +24,21 @@
         <section class="item__review-summary">
             <div class="item__review-favorite">
                 @if($item->isLikedByAuthUser())
-                <a href="{{ route('item.unfavorite', ['id'=>$item->id]) }}" class="no-app-style">
-                    <img src="{{ asset('images/いいねマーク.svg') }}" class="star-liked" alt="いいね">
-                    <span class="review-count">{{ $item->favorites->count() }}</span>
-                </a>
+
+                <form action="{{ route('item.unfavorite', ['id'=>$item->id]) }}" class="no-app-style" method="post">
+                    @csrf
+                    <button type="submit" class="form__button-submit--disliked">
+                        <img src="{{ asset('images/いいねマーク.svg') }}" class="star-liked" alt="いいね">
+                        <span class="review-count">{{ $item->favorites->count() }}</span>
+                    </button>
+                </form>
                 @else
-                <a href="{{ route('item.favorite', ['id'=>$item->id]) }}" class="no-app-style">
-                    <img src="{{ asset('images/いいねマーク.svg') }}" class="star" alt="いいね">
-                    <span class="review-count">{{ $item->favorites->count() }}</span>
-                </a>
+                <form action="{{ route('item.favorite', ['id'=>$item->id]) }}" class="no-app-style" method="post">
+                    @csrf
+                    <button type="submit"  class="form__button-submit--liked">
+                        <img src="{{ asset('images/いいねマーク.svg') }}" class="star" alt="いいね">
+                        <span class="review-count">{{ $item->favorites->count() }}</span>
+                    </button>
                 @endif
             </div>
             <div class="item__review-comment">
@@ -86,7 +92,7 @@
         </article>
 
         <section class="item__comment-preview">
-            <form class="form" action="{{ route('item.comment', ['id'=>$item->id]) }}" method="post">
+            <form class="form" action="{{ route('item.comment', ['item_id'=>$item->id]) }}" method="post">
                 @csrf
                 <label for="review" class="item__comment-label">商品へのコメント</label>
                 <textarea class="item__comment-content @error('review') is-invalid @enderror" name="review" id="review">{{ old('review') }}</textarea>

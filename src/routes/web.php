@@ -99,9 +99,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 
     // いいね機能
-    Route::get('/item/favorite/{id}', [FavoriteController::class, 'favorite'])->name('item.favorite');
-    Route::get('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->name('item.unfavorite');
+    Route::post('/item/favorite/{id}', [FavoriteController::class, 'favorite'])->name('item.favorite');
+    Route::post('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->name('item.unfavorite');
 
     // コメント機能
-    Route::post('/item/comment/{id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');
+    Route::post('/item/comment/{item_id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');
 });
