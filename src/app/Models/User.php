@@ -58,12 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
     // リレーション
     public function orders()
     {
-        return $this->hasMany('App\Models\Order');
+        return $this->hasMany(Order::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     public function favorites()
@@ -73,6 +73,31 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function items()
     {
-        return $this->hasMany('App\Models\Item');
+        return $this->hasMany(Item::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
+    public function givenReviews() //したレビュー
+    {
+        return $this->hasMany(Review::class, 'reviewer_id');
+    }
+
+    public function receivedReviews() // されたレビュー
+    {
+        return $this->hasMany(Review::class, 'reviewed_id');
+    }
+
+    // レビュー平均の取得
+    public function getAverageRatingAttribute()
+    {
+        if ($this->receivedReviews()->count() === 0) {
+            return null;
+        }
+
+        return round($this->receivedReviews()->avg('score'));
     }
 }

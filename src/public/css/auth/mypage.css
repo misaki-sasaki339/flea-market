@@ -21,6 +21,24 @@
 .name {
     font-weight: bold;
     font-size: 20px;
+    margin: 12px 0;
+}
+
+.rating {
+    display: inline-flex;
+    gap: 2px;
+}
+
+.star {
+    font-size: 20px;
+}
+
+.star--active {
+    color: #FFF048;
+}
+
+.star--inactive {
+    color: #D9D9D9;
 }
 
 .profile__edit-button {
@@ -77,3 +95,11 @@
 #tab2:checked ~ #content2 {
     display: grid;
 }
+
+#tab3:checked ~ .tab__label label[for="tab3"] {
+    color: #ff0000;
+}
+#tab3:checked ~ #content3 {
+    display: grid;
+}
+

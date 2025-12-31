@@ -52,7 +52,7 @@
                 @csrf
                 <input type="hidden" name="id" value="{{ $item->id }}">
                 <div class="form__button">
-                    <button class="form__button-submit" type="submit">購入手続きへ</button>
+                    <a class="form__button-submit" href="{{ route('purchase', $item) }}">購入手続きへ</a>
                 </div>
             </form>
         </div>

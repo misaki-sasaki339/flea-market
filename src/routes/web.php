@@ -9,6 +9,8 @@ use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -103,5 +105,23 @@ Route::middleware('auth')->group(function () {
     Route::post('/item/unfavorite/{id}', [FavoriteController::class, 'unfavorite'])->name('item.unfavorite');
 
     // コメント機能
-    Route::post('/item/comment/{item_id}', [CommentController::class, 'store'])->middleware('auth')->name('item.comment');
+    Route::post('/item/comment/{item_id}', [CommentController::class, 'store'])->name('item.comment');
+
+    // チャット機能
+    Route::get('/messages/{order}', [MessageController::class, 'show'])->name('messages.show');
+    Route::post('/messages/{order}', [MessageController::class, 'store'])->name('messages.store');
+    Route::patch('/messages/{message}', [MessageController::class, 'update'])->name('messages.update');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+
+    // レビュー機能
+    Route::post('/reviews/{order}', [ReviewController::class, 'store'])->name('reviews.store');
+});
+
+
+// メールビューの確認用ルート
+use App\Mail\TransactionCompletedMail;
+use App\Models\Order;
+
+Route::get('/mail/preview/transaction/{order}', function (Order $order) {
+    return new TransactionCompletedMail($order);
 });

@@ -25,7 +25,7 @@ class Item extends Model
     // リレーション
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'category_items');
+        return $this->belongsToMany(Category::class, 'category_item');
     }
 
     public function condition()
@@ -54,17 +54,17 @@ class Item extends Model
 
     public function order()
     {
-        return $this->hasOne('App\Models\Order');
+        return $this->hasOne(Order::class);
     }
 
     public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany(Comment::class);
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
     // ローカルスコープ

@@ -30,7 +30,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/HDD+Hard+Disk.jpg',
-                'user_id' => '2',
+                'user_id' => '1',
                 'condition_id' => '2',
                 'name' => 'HDD',
                 'brand' => '西芝',
@@ -39,7 +39,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/onion.jpg',
-                'user_id' => '3',
+                'user_id' => '1',
                 'condition_id' => '3',
                 'name' => '玉ねぎ3束',
                 'brand' => 'なし',
@@ -48,7 +48,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Leather+Shoes+Product+Photo.jpg',
-                'user_id' => '4',
+                'user_id' => '1',
                 'condition_id' => '4',
                 'name' => '革靴',
                 'brand' => '',
@@ -57,7 +57,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Living+Room+Laptop.jpg',
-                'user_id' => '5',
+                'user_id' => '1',
                 'condition_id' => '1',
                 'name' => 'ノートPC',
                 'brand' => '',
@@ -66,7 +66,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Music+Mic+4632231.jpg',
-                'user_id' => '6',
+                'user_id' => '2',
                 'condition_id' => '2',
                 'name' => 'マイク',
                 'brand' => '',
@@ -75,7 +75,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Purse+fashion+pocket.jpg',
-                'user_id' => '7',
+                'user_id' => '2',
                 'condition_id' => '3',
                 'name' => 'ショルダーバッグ',
                 'brand' => '',
@@ -84,7 +84,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Tumbler+souvenir.jpg',
-                'user_id' => '8',
+                'user_id' => '2',
                 'condition_id' => '4',
                 'name' => 'タンブラー',
                 'brand' => 'なし',
@@ -93,7 +93,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/Waitress+with+Coffee+Grinder.jpg',
-                'user_id' => '9',
+                'user_id' => '2',
                 'condition_id' => '1',
                 'name' => 'コーヒーミル',
                 'brand' => 'Starbacks',
@@ -102,7 +102,7 @@ class ItemsTableSeeder extends Seeder
             ],
             [
                 'img' => 'dummy/items/外出メイクアップセット.jpg',
-                'user_id' => '1',
+                'user_id' => '2',
                 'condition_id' => '2',
                 'name' => 'メイクセット',
                 'brand' => '',

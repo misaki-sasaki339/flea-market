@@ -25,9 +25,6 @@
     margin-bottom: 48px;
 }
 
-.form-resend{
-
-}
 
 .form__link{
     border: none;
@@ -41,5 +38,5 @@
 
 .form__link:hover,
 .form__button-submit:hover{
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }

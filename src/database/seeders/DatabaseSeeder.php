@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             CategoriesTableSeeder::class,
             ItemsTableSeeder::class,
-            CategoryItemsTableSeeder::class,
+            CategoryItemTableSeeder::class,
         ]);
-        Comment::factory()->count(15)->create();
+        Comment::factory()->count(10)->create();
     }
 }

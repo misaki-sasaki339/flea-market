@@ -16,6 +16,6 @@ class Condition extends Model
     // リレーション
     public function items()
     {
-        return $this->hasOne('App\Models\Item');
+        return $this->hasOne(Item::class);
     }
 }

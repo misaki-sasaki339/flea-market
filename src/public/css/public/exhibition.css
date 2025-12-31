@@ -116,6 +116,8 @@ img.comment-icon {
     font-weight: bold;
     border: none;
     font-size: 16px;
+    text-decoration: none;
+
 }
 
 .form__button-submit:hover {

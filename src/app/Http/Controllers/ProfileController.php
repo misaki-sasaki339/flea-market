@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Models\Item;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,13 +18,24 @@ class ProfileController extends Controller
         $page = $request->query('page', 'sell');
 
         if ($page === 'sell') { // 出品商品の表示
+            $orders = collect();
             $items = Item::where('user_id', $user->id)->get();
         } elseif ($page === 'buy') { // 購入商品の表示
             $orders = $user->orders()->with('item')->get();
             $items = $orders->pluck('item');
+        } elseif ($page === 'transaction') {
+            $orders = Order::with('item')
+                ->relatedToUser($user->id)
+                ->whereDoesntHave('reviews', function ($q) use ($user) {
+                    $q->where('reviewer_id', $user->id);
+                })
+                ->get();
+            $items = $orders->pluck('item');
+        } else {
+            $items = collect();
         }
 
-        return view('auth.mypage', compact('user', 'items', 'page'));
+        return view('auth.mypage', compact('user', 'items', 'page', 'orders'));
     }
 
     // プロフィールの編集画面の表示

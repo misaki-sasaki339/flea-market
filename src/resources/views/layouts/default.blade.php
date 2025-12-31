@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/layouts/flash.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     @yield('css')
+    @yield('scripts')
 </head>
 
 <body>
