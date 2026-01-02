@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Message;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -99,5 +100,16 @@ class User extends Authenticatable implements MustVerifyEmail
         }
 
         return round($this->receivedReviews()->avg('score'));
+    }
+
+    // ユーザーの全未読件数取得
+    public function totalUnreadMessagesCount(): int
+    {
+        return Message::where('is_read', false)
+            ->where('user_id', '!=', $this->id)
+            ->whereHas('order', function ($q) {
+                $q->whereDoesntHave('buyerReview');
+            })
+            ->count();
     }
 }

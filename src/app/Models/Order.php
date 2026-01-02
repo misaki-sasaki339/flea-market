@@ -40,15 +40,27 @@ class Order extends Model
         return $this->hasMany(Review::class);
     }
 
+    // ユーザーが関係する取引の取得（出品・購入）
     public function scopeRelatedToUser($query, $userId)
     {
         return $query->where('user_id', $userId)
             ->orWhereHas('item', fn($q) => $q->where('user_id', $userId));
     }
 
+    // 購入者が書いたレビューを取得
     public function buyerReview()
     {
         return $this->hasOne(Review::class)
             ->whereColumn('reviewer_id', 'orders.user_id');
     }
+
+    // 1取引あたりの未読件数取得
+    public function unreadMessagesCountForUser(int $userId): int
+    {
+        return $this->messages()
+            ->where('is_read', false)
+            ->where('user_id', '!=', $userId)
+            ->count();
+    }
+
 }

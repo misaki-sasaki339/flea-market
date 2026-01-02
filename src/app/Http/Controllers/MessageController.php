@@ -21,12 +21,13 @@ class MessageController extends Controller
         ) {
             abort(403);
         }
-
+        // 注文情報の取得
         $orders = Order::with('item.user')
             ->relatedToUser(auth()->id())
             ->whereDoesntHave('buyerReview')
             ->get();
 
+        // メッセージの取得
         $messages = Message::where('order_id', $order->id)
             ->with('user')
             ->orderBy('created_at')
@@ -51,6 +52,12 @@ class MessageController extends Controller
             ->exists();
 
         $canSellerReview = $isSeller && $buyerReviewed && $sellerNotReviewed;
+
+        // 既読処理
+        Message::where('order_id', $order->id)
+            ->where('user_id', '!=', auth()->id())
+            ->where('is_read', false)
+            ->update(['is_read' => true]);
 
         return view('auth.message',
         [

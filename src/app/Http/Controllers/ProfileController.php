@@ -29,8 +29,15 @@ class ProfileController extends Controller
                 ->whereDoesntHave('reviews', function ($q) use ($user) {
                     $q->where('reviewer_id', $user->id);
                 })
+                ->withCount(['messages as unread_count' => function ($q) use ($user) {
+                    $q->where('is_read', false)
+                      ->where('user_id', '!=', $user->id);
+                }])
+                ->withMax('messages', 'created_at')
+                ->orderByDesc('unread_count')
+                ->orderByDesc('messages_max_created_at')
                 ->get();
-            $items = $orders->pluck('item');
+            $items = collect();
         } else {
             $items = collect();
         }

@@ -1,7 +1,16 @@
+@props([
+    'item',
+    'type' => 'items',
+    'mode' => null,
+    'order' => null,
+])
+
 @php
-    $url = $mode === 'transaction' && $orderId
-        ? route('messages.show', ['order' => $orderId])
-        : route('item.show', ['item' => $item->id]);
+    if ($mode === 'transaction' && $order instanceof \App\Models\Order && !empty($order->id)) {
+        $url = route('messages.show', ['order' => $order->id]);
+    } else {
+        $url = route('item.show', ['item' => $item->id]);
+    }
 @endphp
 
 <div class="item-card">
@@ -14,6 +23,20 @@
                 <div class="sold-overlay">
                     <span class="sold-text">Sold</span>
                 </div>
+                @endif
+
+                @php
+                    $unreadCount = 0;
+
+                    if ($mode === 'transaction' && $order) {
+                        $unreadCount = $order->unreadMessagesCountForUser(auth()->id());
+                    }
+                @endphp
+
+                @if ($unreadCount > 0)
+                    <div class="unread-badge">
+                        <span class="unread-count">{{ $unreadCount }}</span>
+                    </div>
                 @endif
             </div>
         </a>

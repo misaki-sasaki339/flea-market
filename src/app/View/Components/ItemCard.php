@@ -3,19 +3,20 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Order;
 
 class ItemCard extends Component
 {
     public $item;
     public string $mode;
-    public ?int $orderId;
+    public ?Order $order;
     public string $type;
 
-    public function __construct($item, string $mode = 'default', ?int $orderId = null, string $type = 'items')
+    public function __construct($item, string $mode = 'default', ?Order $order = null, string $type = 'items')
     {
         $this->item = $item;
         $this->mode = $mode;
-        $this->orderId = $orderId;
+        $this->order = $order;
         $this->type = $type;
     }
 

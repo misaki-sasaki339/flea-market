@@ -38,7 +38,11 @@
         <div class="tab__label">
             <label for="tab1" onclick="location.href='{{ route('mypage', ['page' => 'sell']) }}'">出品した商品</label>
             <label for="tab2" onclick="location.href='{{ route('mypage', ['page' => 'buy']) }}'">購入した商品</label>
-            <label for="tab3" onclick="location.href='{{ route('mypage', ['page' => 'transaction']) }}'">取引中の商品</label>
+            <label for="tab3" onclick="location.href='{{ route('mypage', ['page' => 'transaction']) }}'">取引中の商品
+                @if ($count = auth()->user()->totalUnreadMessagesCount())
+                    <span class="tab-badge">{{ $count }}</span>
+                @endif
+            </label>
         </div>
 
         <div class="tab__content" id="content1">
@@ -55,7 +59,7 @@
 
         <div class="tab__content" id="content3">
             @foreach($orders as $order)
-            <x-item-card :item="$order->item" mode="transaction" :order-id="$order->id" />
+            <x-item-card :item="$order->item" :order="$order" mode="transaction" />
             @endforeach
         </div>
     </div>

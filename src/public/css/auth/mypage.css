@@ -103,3 +103,37 @@
     display: grid;
 }
 
+.item-image-wrapper {
+    position: relative;
+}
+
+.tab-badge {
+    background-color: #FF0000;
+    color: #FFF;
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 32px;
+}
+
+.unread-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    z-index: 10;
+}
+
+.unread-count{
+    background-color: #FF0000;
+    border-radius: 50%;
+    color: #FFF;
+    font-size: 14px;
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
