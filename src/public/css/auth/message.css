@@ -1,7 +1,6 @@
 .container {
     display: flex;
     width: 100%;
-    height: calc(100vh - 64px);
 }
 
 .chat-sidebar {
@@ -148,6 +147,7 @@
 .chat-user-name {
     font-weight: bold;
     font-size: 16px;
+    margin: 0 14px;
 }
 
 .image--avatar-small {
@@ -161,6 +161,7 @@
     border-radius: 4px;
     padding: 8px;
     width: 600px;
+    margin: 8px 0;
 }
 
 .chat-img {
@@ -251,6 +252,12 @@
     text-decoration: none;
 }
 
+.review-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
 .review-modal__container,
 #review-modal__mask {
     display: none;
@@ -268,7 +275,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #FDFCE6;
+    background: #fdfce6;
     border-radius: 8px;
     z-index: 1001;
     border: 1px solid #000;
@@ -280,7 +287,6 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    /*background: rgba(0, 0, 0, 0.5); */
     z-index: 1000;
 }
 
@@ -293,18 +299,17 @@
 .review-star {
     font-size: 68px;
     cursor: pointer;
-    color: #D9D9D9;
+    color: #d9d9d9;
 }
 
 .review-star.is-active {
-    color: #FFF048;
+    color: #fff048;
 }
 
 .review-title__message {
     font-size: 24px;
     margin: 0;
 }
-
 
 .review-content__message {
     color: #868686;
@@ -319,10 +324,92 @@
 }
 
 #review-modal__close {
-    background-color: #FF8282;
+    background-color: #ff8282;
     border: none;
-    color: #FFF;
+    color: #fff;
     font-size: 16px;
     border-radius: 4px;
     padding: 4px 8px;
+    cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .chat-main {
+        height: calc(100vh - 48px);
+        width: 75%;
+    }
+
+    .chat-sidebar {
+        width: 25%;
+    }
+
+    .sidebar-title {
+        font-size: 18px;
+    }
+
+    .item-link {
+        font-size: 14px;
+    }
+
+    .image--avatar {
+        width: 54px;
+        height: 54px;
+    }
+
+    .chat-title__partner {
+        font-size: 18px;
+        margin: auto;
+    }
+
+    .complete-button {
+        font-size: 14px;
+        width: 140px;
+    }
+
+    .image--items {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-name {
+        font-size: 24px;
+    }
+
+    .item-price {
+        font-size: 22px;
+        margin: 4px 0;
+    }
+
+    .enmark {
+        font-size: 20px;
+    }
+    .chat-body {
+        width: 320px;
+        margin: 4px 0;
+    }
+
+    .chat-user-name {
+        font-size: 14px;
+        margin: 0 12px;
+    }
+    .image--avatar-small {
+        width: 48px;
+        height: 48px;
+    }
+
+    .chat-img {
+        width: 240px;
+    }
+
+    .chat-form {
+        padding: 0 12px 24px;
+    }
+
+    .form__button-upload {
+        margin-right: 12px;
+    }
+
+    .form__button-submit {
+        padding: 0;
+    }
 }

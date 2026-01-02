@@ -36,7 +36,7 @@
 }
 
 .item__details {
-    padding: 0 80px 0 40px;
+    padding: 0 80px 32px 80px;
 }
 
 h2 {
@@ -252,5 +252,80 @@ textarea.item__comment-content {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .content {
+        margin: 24px auto;
+        column-gap: 24px;
+    }
+
+    .tab__content-item {
+        margin: 0;
+    }
+
+    .item-image-wrapper {
+        padding-left: 24px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 18px;
+        margin: 12px 0;
+    }
+
+    .item-price {
+        font-size: 32px;
+    }
+
+    img.star, img.star-liked, img.comment-icon {
+        height: 24px;
+        width: 24px;
+    }
+
+    .item__details {
+        padding: 0 32px 24px 0;
+    }
+
+    dd {
+        font-size: 14px;
+    }
+
+    p.item__description-content {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+    .category-name {
+        margin-right: 8px;
+        font-size: 12px;
+    }
+
+    .review-count {
+        font-size: 12px;
+    }
+
+    .item__review-posted--label {
+        margin: 0 0 12px;
+    }
+
+    .item__review-posted--content {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .item__comment-label {
+        font-size: 16px;
+    }
+
+    .sold-overlay {
+        top: 64px;
+        left: -6px;
+        font-size: 16px;
+        padding: 4px 56px;
+    }
 }
 

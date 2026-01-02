@@ -65,3 +65,26 @@
 #tab2:checked ~ #content2{
     display: grid;
 }
+
+@media (max-width: 850px) {
+    .tab__label label {
+        font-size: 14px;
+        margin-right: 32px;
+    }
+
+    .tab__label label:nth-child(1) {
+        margin-left: 80px;
+    }
+
+    .tab__content {
+        margin: 12px auto;
+    }
+
+    .tab__content-item {
+        margin: 12px;
+    }
+
+    .item-name {
+        font-size: 14px;
+    }
+}

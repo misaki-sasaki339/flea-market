@@ -24,16 +24,16 @@ class UsersTableSeeder extends Seeder
             'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
-            'name' => '甘楽',
-            'email' => 'kanra@example.com',
+            'name' => '山田花子',
+            'email' => 'yamadahanako@example.com',
             'password' => Hash::make('password123'),
             'avatar' => 'dummy/avatar/pose_pien_uruuru_woman.png',
             'postcode' => '100-8111',
             'address' => '東京都千代田区千代田１−１',
         ]);
         User::create([
-            'name' => 'セットン',
-            'email' => 'setton@example.com',
+            'name' => 'テストスタッフ',
+            'email' => 'teststaff@example.com',
             'password' => Hash::make('password123'),
             'postcode' => '100-8111',
             'address' => '東京都千代田区千代田１−１',

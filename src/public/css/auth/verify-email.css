@@ -40,3 +40,16 @@
 .form__button-submit:hover{
     transform: translateY(-5px);
 }
+
+
+@media (max-width: 850px) {
+    .message{
+        font-size: 18px;
+    }
+
+    .form__button-submit{
+        font-size: 18px;
+        width: 180px;
+        height: 48px;
+    }
+}

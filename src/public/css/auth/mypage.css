@@ -116,7 +116,7 @@
     font-size: 16px;
     align-items: center;
     justify-content: center;
-    border-radius: 32px;
+    border-radius: 8px;
 }
 
 .unread-badge {
@@ -136,4 +136,49 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 850px) {
+    .image--avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+
+    .profile__edit-button{
+        width: 140px;
+        font-size: 12px;
+    }
+
+    .profile-content{
+        gap: 24px;
+    }
+
+    .profile {
+        margin: 24px 86px;
+    }
+
+    .tab__label label {
+        font-size: 14px;
+        margin-right: 32px;
+    }
+
+    .tab__label label:nth-child(1) {
+        margin-left: 80px;
+    }
+
+    .tab__content {
+        margin: 12px auto;
+    }
+
+    .tab__content-item {
+        margin: 12px;
+    }
+
+    .item-name {
+        font-size: 14px;
+    }
 }

@@ -2,6 +2,8 @@
     height: 32px;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 540px
 }
 
 .form-search {
@@ -10,9 +12,9 @@
 
 .form__input-search {
     height: 40px;
-    width: 480px;
     box-sizing: border-box;
     font-size: 14px;
+    width: 100%;
 }
 
 .header-nav__link {
@@ -116,4 +118,42 @@ button.header-nav__link-logout {
     text-align: left;
     font-size: 16px;
     margin: 4px 0;
+}
+
+@media (max-width: 850px) {
+    .header-nav__link-list {
+        gap: 8px;
+    }
+
+    .form__input-search {
+        height: 32px;
+        box-sizing: border-box;
+        font-size: 12px;
+    }
+
+    .header-nav__link {
+        margin-right: 8px;
+    }
+
+    .header-nav__search {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    button.header-nav__link-logout,
+    .header-nav__link-mypage,
+    .header-nav__link-sell,
+    .header-nav__link-login {
+        font-size: 14px;
+    }
+
+    .sold-overlay {
+        top: 12px;
+        left: -24px;
+        font-size: 10px;
+        padding: 2px 24px;
+    }
 }

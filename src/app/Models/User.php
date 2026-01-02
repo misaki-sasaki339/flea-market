@@ -106,9 +106,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function totalUnreadMessagesCount(): int
     {
         return Message::where('is_read', false)
-            ->where('user_id', '!=', $this->id)
+            ->where('user_id', '!=', $this->id) // 自分以外が送信
             ->whereHas('order', function ($q) {
-                $q->whereDoesntHave('buyerReview');
+                $q->where(function ($sub) {
+                    $sub->where('user_id', $this->id) // 自分が購入者
+                        ->orWhereHas('item', function ($iq) {
+                            $iq->where('user_id', $this->id); // 自分が出品者
+                        });
+                })
+                ->whereDoesntHave('buyerReview'); // 取引中
             })
             ->count();
     }

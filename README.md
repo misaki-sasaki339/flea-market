@@ -116,3 +116,31 @@ MailHogはdocker-compose.ymlに含まれています。
 以下のURLにアクセスしてメールを確認してください。
 
 http://localhost:8025
+
+---
+
+## レスポンシブ対応について
+
+本アプリケーションは以下の画面幅での表示を想定しています。
+
+- PC：1400px〜1540px
+- タブレット：768px〜850px（レイアウト崩れ防止対応）
+
+---
+
+## ログイン情報
+
+以下のテストユーザーを使用してログインできます。
+
+### 出品者ユーザー
+- メールアドレス：tanakatarou@example.com
+- パスワード：password123
+
+- メールアドレス：yamadahanako@example.com
+- パスワード：password123
+
+### 購入者ユーザー
+- メールアドレス：teststaff@example.com
+- パスワード：password123
+
+※上記ユーザーは `php artisan db:seed` 実行時に作成されます。

@@ -23,7 +23,7 @@ class ProfileController extends Controller
         } elseif ($page === 'buy') { // 購入商品の表示
             $orders = $user->orders()->with('item')->get();
             $items = $orders->pluck('item');
-        } elseif ($page === 'transaction') {
+        } elseif ($page === 'transaction') { //取引中の表示
             $orders = Order::with('item')
                 ->relatedToUser($user->id)
                 ->whereDoesntHave('reviews', function ($q) use ($user) {
@@ -34,7 +34,6 @@ class ProfileController extends Controller
                       ->where('user_id', '!=', $user->id);
                 }])
                 ->withMax('messages', 'created_at')
-                ->orderByDesc('unread_count')
                 ->orderByDesc('messages_max_created_at')
                 ->get();
             $items = collect();

@@ -151,3 +151,77 @@ td {
 .form__button-submit:hover {
     transform: translateY(-5px);
 }
+
+@media (max-width: 850px) {
+    .content {
+        margin: 32px;
+    }
+
+    .form {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 32px;
+    }
+
+    .form-group__item {
+        padding-bottom: 24px;
+    }
+
+    .image--items {
+        width: 180px;
+        height: 180px;
+        margin-right: 32px;
+    }
+
+    .item__price-label {
+        margin: 8px 0;
+    }
+    .form-group__payment {
+        padding: 16px;
+    }
+
+    .form__label--title {
+        font-size: 18px;
+    }
+
+    select#payment {
+        margin: 24px;
+    }
+
+    section.form-group__address {
+        margin: 0;
+        padding: 16px;
+    }
+
+    p.form__label {
+        margin: 0;
+    }
+
+    .address-change__link {
+        font-size: 16px;
+    }
+
+    .form-group__content {
+        font-size: 16px;
+        padding: 0 24px;
+    }
+
+    .form-group__table {
+        font-size: 16px;
+    }
+
+    tr {
+        height: 80px;
+    }
+
+    .item-price {
+        font-size: 18px;
+    }
+
+    .form-group__table td {
+        font-size: 14px;
+    }
+
+    .form__left {
+        padding-right:0;
+    }
+}
