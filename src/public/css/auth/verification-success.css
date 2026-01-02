@@ -1,4 +1,4 @@
-.verification-success{
+.verification-success {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,25 +6,25 @@
     min-height: calc(100vh - 64px);
 }
 
-h2{
+h2 {
     font-size: 32px;
     margin-bottom: 48px;
     margin-top: 0;
 }
 
-.message{
+.message {
     font-size: 24px;
     text-align: center;
     margin-bottom: 48px;
     margin-top: 0;
 }
 
-.form__button-submit{
-    width:150px;
+.form__button-submit {
+    width: 150px;
     height: 40px;
     border-radius: 3px;
-    background-color: #FF5555;
-    color: #FFFFFF;
+    background-color: #ff5555;
+    color: #ffffff;
     font-weight: bold;
     border: none;
     font-size: 16px;
@@ -36,11 +36,11 @@ h2{
 }
 
 @media (max-width: 850px) {
-    h2{
+    h2 {
         font-size: 24px;
     }
 
-    .message{
+    .message {
         font-size: 18px;
     }
 }

@@ -1,4 +1,4 @@
-.verify-email{
+.verify-email {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,14 +6,14 @@
     min-height: calc(100vh - 64px);
 }
 
-.message{
+.message {
     font-weight: bold;
     font-size: 24px;
     text-align: center;
     margin-bottom: 48px;
 }
 
-.form__button-submit{
+.form__button-submit {
     font-weight: bold;
     font-size: 24px;
     text-align: center;
@@ -25,11 +25,10 @@
     margin-bottom: 48px;
 }
 
-
-.form__link{
+.form__link {
     border: none;
     background: none;
-    color: #0073CC;
+    color: #0073cc;
     text-decoration: none;
     font-size: 16px;
     margin-bottom: 16px;
@@ -37,17 +36,16 @@
 }
 
 .form__link:hover,
-.form__button-submit:hover{
+.form__button-submit:hover {
     transform: translateY(-5px);
 }
 
-
 @media (max-width: 850px) {
-    .message{
+    .message {
         font-size: 18px;
     }
 
-    .form__button-submit{
+    .form__button-submit {
         font-size: 18px;
         width: 180px;
         height: 48px;

@@ -119,9 +119,9 @@ Route::middleware('auth')->group(function () {
 
 
 // メールビューの確認用ルート
-use App\Mail\TransactionCompletedMail;
+/* use App\Mail\TransactionCompletedMail;
 use App\Models\Order;
 
 Route::get('/mail/preview/transaction/{order}', function (Order $order) {
     return new TransactionCompletedMail($order);
-});
+}); */

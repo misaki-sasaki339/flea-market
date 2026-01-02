@@ -34,11 +34,11 @@
 }
 
 .star--active {
-    color: #FFF048;
+    color: #fff048;
 }
 
 .star--inactive {
-    color: #D9D9D9;
+    color: #d9d9d9;
 }
 
 .profile__edit-button {
@@ -108,8 +108,8 @@
 }
 
 .tab-badge {
-    background-color: #FF0000;
-    color: #FFF;
+    background-color: #ff0000;
+    color: #fff;
     display: inline-flex;
     width: 24px;
     height: 24px;
@@ -126,10 +126,10 @@
     z-index: 10;
 }
 
-.unread-count{
-    background-color: #FF0000;
+.unread-count {
+    background-color: #ff0000;
     border-radius: 50%;
-    color: #FFF;
+    color: #fff;
     font-size: 14px;
     width: 24px;
     height: 24px;
@@ -148,12 +148,12 @@
         font-size: 18px;
     }
 
-    .profile__edit-button{
+    .profile__edit-button {
         width: 140px;
         font-size: 12px;
     }
 
-    .profile-content{
+    .profile-content {
         gap: 24px;
     }
 
