@@ -131,16 +131,19 @@ http://localhost:8025
 ## ログイン情報
 
 以下のテストユーザーを使用してログインできます。
+
 ログインURL：http://localhost/login
-### 出品者ユーザー
+
+### 🧑‍💼 出品者ユーザー①
 - メールアドレス：tanakatarou@example.com
 - パスワード：password123
 
+### 🧑‍💼 出品者ユーザー②
 - メールアドレス：yamadahanako@example.com
 - パスワード：password123
 
-### 購入者ユーザー
+### 🛒 購入者ユーザー
 - メールアドレス：teststaff@example.com
 - パスワード：password123
 
-※上記ユーザーは `php artisan db:seed` 実行時に作成されます。
+※ 上記ユーザーは `php artisan db:seed` 実行時に自動作成されます。
