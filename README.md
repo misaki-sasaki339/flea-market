@@ -131,7 +131,7 @@ http://localhost:8025
 ## ログイン情報
 
 以下のテストユーザーを使用してログインできます。
-
+ログインURL：http://localhost/login
 ### 出品者ユーザー
 - メールアドレス：tanakatarou@example.com
 - パスワード：password123

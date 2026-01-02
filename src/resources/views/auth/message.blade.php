@@ -88,9 +88,7 @@
                             @endif
                         </div>
 
-                        <div class="chat-body" id="message-body-{{ $message->id }}">
-                            {{ $message->body }}
-                        </div>
+                        <div class="chat-body" id="message-body-{{ $message->id }}">{{ $message->body }}</div>
 
                         @if ($message->img)
                             <img src="{{ asset('storage/' . $message->img) }}" alt="チャット画像" class="chat-img">

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 hiddenId.value = messageId;
 
-                form.getAttribute('action', `/message/${messageId}`);
+                form.setAttribute('action', `/messages/${messageId}`);
 
                 if (!form.querySelector('input[name="_method"]')){
                     const methodInput = document.createElement('input');

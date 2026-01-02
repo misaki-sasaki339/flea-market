@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Message;
 use App\Http\Requests\MessageRequest;
@@ -59,15 +58,17 @@ class MessageController extends Controller
             ->where('is_read', false)
             ->update(['is_read' => true]);
 
-        return view('auth.message',
-        [
+        return view(
+            'auth.message',
+            [
             'orders' => $orders,
             'partner' => $partner,
             'order' => $order,
             'messages' => $messages,
             'latestMyMessageId' => $latestMyMessageId,
             'canSellerReview' => $canSellerReview,
-        ]);
+        ]
+        );
     }
 
     // メッセージの投稿
@@ -98,8 +99,8 @@ class MessageController extends Controller
 
         return redirect()->back();
     }
-    // 投稿済みメッセージの削除
 
+    // 投稿済みメッセージの削除
     public function destroy(Message $message)
     {
         if ($message->user_id !== auth()->id()) {
