@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        ?.getAttribute('content');
+
     // メッセージの編集
     const form = document.getElementById('message-form');
     if (form) {
 
         const textarea = form.querySelector('textarea[name="body"]');
         const hiddenId = document.getElementById('edit-message-id');
+        const orderId = form.dataset.orderId;
 
         const storeAction = form.getAttribute('action');
 
@@ -28,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     methodInput.value = 'PATCH';
                     form.appendChild(methodInput);
                 }
+            });
+        });
+
+        // 入力内容のセッション保存
+        textarea.addEventListener('input', () => {
+            fetch('/messages/draft', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken,
+                },
+                body: JSON.stringify({
+                order_id: orderId,
+                body: textarea.value,
+                }),
             });
         });
     };

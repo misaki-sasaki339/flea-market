@@ -6,6 +6,7 @@ use App\Models\Order;
 use App\Models\Message;
 use App\Http\Requests\MessageRequest;
 use App\Models\Review;
+use Illuminate\Http\Request;
 
 class MessageController extends Controller
 {
@@ -71,6 +72,16 @@ class MessageController extends Controller
         );
     }
 
+    // 入力内容のセッション保存
+    public function saveDraft(Request $request)
+    {
+        session([
+            'draft_message_' . $request->order_id => $request->body,
+        ]);
+
+        return response()->json(['status' => 'ok']);
+    }
+
     // メッセージの投稿
     public function store(MessageRequest $request, Order $order)
     {
@@ -83,6 +94,8 @@ class MessageController extends Controller
                 : null,
         ]);
 
+        session()->forget('draft_message_' . $order->id);
+        
         return redirect()->route('messages.show', $order);
     }
 

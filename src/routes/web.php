@@ -109,6 +109,7 @@ Route::middleware('auth')->group(function () {
 
     // チャット機能
     Route::get('/messages/{order}', [MessageController::class, 'show'])->name('messages.show');
+    Route::post('/messages/draft', [MessageController::class, 'saveDraft'])->name('messages.draft');
     Route::post('/messages/{order}', [MessageController::class, 'store'])->name('messages.store');
     Route::patch('/messages/{message}', [MessageController::class, 'update'])->name('messages.update');
     Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');

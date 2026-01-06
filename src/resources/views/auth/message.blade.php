@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.default')
 
 @section('css')
     @parent
@@ -112,7 +112,7 @@
 
             </div>
             <form action="{{ route('messages.store', ['order' => $order->id]) }}" class="chat-form" method="post"
-                enctype="multipart/form-data" id="message-form">
+                enctype="multipart/form-data" id="message-form" data-order-id="{{ $order->id }}">
                 @csrf
 
                 <div class="error-area">
@@ -128,10 +128,9 @@
                 <input type="hidden" name="message_id" id="edit-message-id">
 
                 <div class="form__input-group">
-                    <textarea class="form__input" name="body" id="" placeholder="取引メッセージを記入してください">{{ old('body') }}</textarea>
+                    <textarea class="form__input" name="body" id="message-body" placeholder="取引メッセージを記入してください">{{ session('draft_message_' . $order->id) }}</textarea>
                     <label for="img" class="form__button-upload">画像を追加</label>
-                    <input type="file" id="img" class="form__input-img" name="img"
-                        accept="image/png, image/jpeg" />
+                    <input type="file" id="img" class="form__input-img" name="img"/>
                     <button type="submit" class="form__button-submit">
                         <img class="form__button-submit--img" src="{{ asset('images/inputbutton.svg') }}"
                             alt="送信">
